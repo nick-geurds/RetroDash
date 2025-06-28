@@ -1,0 +1,95 @@
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PlayerHealth : MonoBehaviour
+{
+    [Header("health settings")]
+    public float currentHealth;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite halfHeart;
+    public Sprite emptyHeart;
+    
+
+    private PlayerMovement playerMovement;
+    private PlayerStats playerStats;
+
+    public float dmgAmount = 1f;
+
+    private void Start()
+    {
+        playerMovement = GetComponent<PlayerMovement>();
+        playerStats = GetComponent<PlayerStats>();
+
+        currentHealth = playerStats.maxHealth;
+    }
+
+    private void Update()
+    {
+        if (currentHealth > playerStats.maxHealth)
+        {
+            currentHealth = playerStats.maxHealth;
+        }
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < playerStats.maxHealth)
+            {
+                float heartHP = currentHealth - i;
+
+                if (heartHP >= 1f)
+                {
+                    hearts[i].sprite = fullHeart;
+                }
+                else if (heartHP >= .5f)
+                {
+                    hearts[i].sprite = halfHeart;
+                }
+                else
+                {
+                    hearts[i].sprite = emptyHeart;  
+                }
+
+            }
+            
+
+            if (i < playerStats.maxHealth)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (playerMovement.isDashing == false)
+            {
+                TakeDamage(dmgAmount);
+                Debug.Log("took dmg");
+            }
+        }
+    }
+
+    public void TakeDamage(float amount)
+    {
+        currentHealth -= amount;
+
+        if (currentHealth <= 0)
+        {
+            Debug.Log("player died");
+            playerMovement.enabled = false;
+        }
+    }
+
+
+}

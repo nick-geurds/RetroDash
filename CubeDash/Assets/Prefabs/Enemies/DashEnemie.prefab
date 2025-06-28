@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &334532681099539715
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4434917460572615197, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+    - target: {fileID: 5156308172466458818, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_Name
+      value: DashEnemie
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546072759500464241, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: canDash
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546072759500464241, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: moveSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546072759500464241, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: dashVelocity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546072759500464241, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: dashParticles
+      value: 
+      objectReference: {fileID: 6180093799587728104}
+    - target: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1945728188801335832}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+--- !u!4 &9045188463729595133 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8728689972504307710, guid: 142e92a6ca922fe4c89cf2202204f689, type: 3}
+  m_PrefabInstance: {fileID: 334532681099539715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6746320908750946056
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9045188463729595133}
+    m_Modifications:
+    - target: {fileID: 5088823925032631568, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088823925032631568, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088823925032631568, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088823925032631568, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088823925032631568, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088823925032631568, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088823925032631568, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088823925032631568, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088823925032631568, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5088823925032631568, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841941615399544071, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+      propertyPath: m_Name
+      value: DashParticlesEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+--- !u!4 &1945728188801335832 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5088823925032631568, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+  m_PrefabInstance: {fileID: 6746320908750946056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6180093799587728104 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 602257005727888864, guid: 7861b80fd56b5fa45b880c237c316bd7, type: 3}
+  m_PrefabInstance: {fileID: 6746320908750946056}
+  m_PrefabAsset: {fileID: 0}

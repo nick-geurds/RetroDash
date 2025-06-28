@@ -4,15 +4,21 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-   private Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private SpriteRenderer playerSprite;
+    public bool isForPhone = false;
 
     [Header("DashSettings")]
     public float dashVelocity = 6f;
-    public float dashTimeElapsed = 1f;
     public ParticleSystem dashParticles;
     private bool canDash = true;
     private float dashTimer;
-    public float dashInterval = 1.5f;
+
+    [Header("anim Settings")]
+    public float scaleAmount = 1.4f;
+    public float scaleDur = .15f;
+
+    public float touchThershold = .5f;
 
     private Vector3 startTouch;
     private Vector3 endTouch;
@@ -20,23 +26,40 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 dashStartPos;
     private Vector3 dashTargetPos;
 
-    public bool isForPhone = false;
+    private Vector3 orgScale;
+    private Color orgColor;
 
-    private bool isDashing = false;
+    [HideInInspector] public bool isDashing = false;
+    private bool readyToDash = false;
+    private bool didAnimUp = true;
 
-    
+    private PlayerStats playerStats;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerSprite = GetComponent<SpriteRenderer>();
+        orgColor = playerSprite.color;
+        playerStats = GetComponent<PlayerStats>();
+        orgScale = transform.localScale;
     }
+
     private void Update()
     {
         dashTimer += Time.deltaTime;
 
-        if (dashTimer >= dashInterval)
+        if (dashTimer >= playerStats.dashInterval)
         {
             canDash = true;
+
+            if (!didAnimUp)
+            {
+                LeanTween.scale(gameObject, orgScale * scaleAmount, scaleDur).setEasePunch();
+                StartCoroutine(changeSpritToWhite());
+                didAnimUp = true;
+            }
+            
+            
         }
 
         if (!isDashing && canDash)
@@ -61,26 +84,47 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                
                 if (Input.GetMouseButtonDown(0))
                 {
-                    startTouch = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    startTouch.z = 0;
+                    if (canDash)
+                    {
+                        readyToDash = true;
+                        Vector3 mousePos = Input.mousePosition;
+                        mousePos.z = 10;
+                        startTouch = Camera.main.ScreenToWorldPoint(mousePos);
+                        startTouch.z = 0;
+                    }
+                   
                 }
 
-                if (Input.GetMouseButtonUp(0))
+                if (Input.GetMouseButtonUp(0) && readyToDash)
                 {
-                    endTouch = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    endTouch.z = 0;
+                    if (canDash)
+                    {
+                        Vector3 mousePos = Input.mousePosition;
+                        mousePos.z = 10;
+                        endTouch = Camera.main.ScreenToWorldPoint(mousePos);
+                        endTouch.z = 0;
 
-                    Vector3 launchDirPC = (endTouch - startTouch).normalized;
-                    dashStartPos = gameObject.transform.position;
-                    dashTargetPos = transform.position + launchDirPC * dashVelocity;
-                    dashParticles.Play();
+                        Vector3 swipe = endTouch - startTouch;
 
-                    StartCoroutine(Dash());
+                        if (swipe.magnitude > touchThershold)
+                        {
+                            Vector3 launchDirPC = swipe.normalized;
+                            dashStartPos = gameObject.transform.position;
+                            dashTargetPos = transform.position + launchDirPC * dashVelocity;
+                            dashParticles.Play();
+                            
 
-                    
-                    dashTimer = 0;
+                            StartCoroutine(Dash());
+
+                            dashTimer = 0;
+                            canDash = false;
+                            readyToDash = false;
+                        }
+                    }
+                   
                 }
             }
         }
@@ -89,11 +133,12 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator Dash()
     {
         isDashing = true;
+        canDash = false;
         float t = 0f;
 
         while (t < 1f)
         {
-            t += Time.deltaTime / dashTimeElapsed;
+            t += Time.deltaTime / playerStats.dashTimeElapsed;
             gameObject.transform.position = Vector3.Lerp(dashStartPos, dashTargetPos, t);
             
             yield return null;
@@ -103,6 +148,15 @@ public class PlayerMovement : MonoBehaviour
         gameObject.transform.position = dashTargetPos;
 
         isDashing = false;
-        canDash = false;
+        didAnimUp = false;
+        
     }
+
+    IEnumerator changeSpritToWhite()
+    {
+        playerSprite.color = Color.white;
+        yield return new WaitForSeconds(scaleDur);
+        playerSprite.color = orgColor;
+    }
+    
 }
