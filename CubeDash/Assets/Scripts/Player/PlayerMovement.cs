@@ -4,15 +4,20 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    [HideInInspector] public Coroutine knockbackRoutine;
+
     private Rigidbody2D rb;
     private SpriteRenderer playerSprite;
     public bool isForPhone = false;
 
     [Header("DashSettings")]
-    public float dashVelocity = 6f;
     public ParticleSystem dashParticles;
+    public LayerMask obstacle;
     private bool canDash = true;
     private float dashTimer;
+    public float knockBackForce = 3f;
+    [HideInInspector] public bool cantKnockBack;
 
     [Header("anim Settings")]
     public float scaleAmount = 1.4f;
@@ -35,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerStats playerStats;
 
+    [HideInInspector] public bool canTakeDamage = true;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
         orgColor = playerSprite.color;
         playerStats = GetComponent<PlayerStats>();
         orgScale = transform.localScale;
+
+        cantKnockBack = false;
     }
 
     private void Update()
@@ -66,21 +75,44 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isForPhone)
             {
-                //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-                //{
-                //    startTouch = Input.GetTouch(0).position;
-                //    startTouch.z = 0;
-                //}
+                //  TOUCH INPUT
+                if (Input.touchCount > 0)
+                {
+                    Touch touch = Input.GetTouch(0);
+                    Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                    touchPos.z = 0;
 
-                //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
-                //{
-                //    endTouch = Input.GetTouch(0).position;
-                //    endTouch.z = 0;
+                    if (touch.phase == TouchPhase.Began)
+                    {
+                        readyToDash = true;
+                        startTouch = touchPos;
+                    }
+                    else if (touch.phase == TouchPhase.Ended && readyToDash)
+                    {
+                        endTouch = touchPos;
+                        Vector3 swipe = endTouch - startTouch;
 
-                //    Vector3 launchDir = endTouch - startTouch;
+                        if (swipe.magnitude > touchThershold)
+                        {
+                            Vector3 launchDir = swipe.normalized;
+                            dashStartPos = transform.position;
 
-                //    rb.linearVelocity = Vector3.ClampMagnitude(launchDir * dashVelocity, dashVelocity);
-                //}
+                            RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDir, playerStats.dashDis, obstacle);
+
+                            dashTargetPos = hit.collider != null ?
+                                hit.point :
+                                transform.position + launchDir * playerStats.dashDis;
+
+                            dashParticles.Play();
+
+                            StartCoroutine(Dash());
+
+                            dashTimer = 0;
+                            canDash = false;
+                            readyToDash = false;
+                        }
+                    }
+                }
             }
             else
             {
@@ -102,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (canDash)
                     {
+
                         Vector3 mousePos = Input.mousePosition;
                         mousePos.z = 10;
                         endTouch = Camera.main.ScreenToWorldPoint(mousePos);
@@ -113,7 +146,21 @@ public class PlayerMovement : MonoBehaviour
                         {
                             Vector3 launchDirPC = swipe.normalized;
                             dashStartPos = gameObject.transform.position;
-                            dashTargetPos = transform.position + launchDirPC * dashVelocity;
+
+                            RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDirPC, playerStats.dashDis, obstacle);
+
+
+                            if (hit.collider != null)
+                            {
+                                dashTargetPos = hit.point;
+                            }
+                            else
+                            {
+                                dashTargetPos = transform.position + launchDirPC * playerStats.dashDis;
+                            }
+
+                            
+
                             dashParticles.Play();
                             
 
@@ -132,15 +179,25 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator Dash()
     {
+        if (knockbackRoutine != null)
+        {
+            StopCoroutine(knockbackRoutine);
+            knockbackRoutine = null;
+            cantKnockBack = false;
+        }
+
         isDashing = true;
         canDash = false;
+        float dashDistance = Vector3.Distance(dashStartPos, dashTargetPos);
+        float dashDuration = dashDistance / playerStats.dashSpeed;
+
         float t = 0f;
 
         while (t < 1f)
         {
-            t += Time.deltaTime / playerStats.dashTimeElapsed;
+            t += Time.deltaTime / dashDuration;
             gameObject.transform.position = Vector3.Lerp(dashStartPos, dashTargetPos, t);
-            
+
             yield return null;
         }
         dashParticles.Stop();
@@ -149,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
 
         isDashing = false;
         didAnimUp = false;
-        
+
     }
 
     IEnumerator changeSpritToWhite()
@@ -158,5 +215,39 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(scaleDur);
         playerSprite.color = orgColor;
     }
-    
+
+    public IEnumerator Knockback(Vector2 direction, float distance, float duration)
+    {
+        if (isDashing) yield break;
+
+        cantKnockBack = true;
+        Vector3 start = transform.position;
+        Vector3 target = start + (Vector3)(direction.normalized * distance);
+
+        Debug.Log("Knockback started!");
+        Debug.DrawLine(start, target, Color.red, 1f);
+        float elapsed = 0f;
+
+        StartCoroutine(iFrames());
+
+        while (elapsed < duration)
+        {
+            rb.MovePosition(Vector3.Lerp(start, target, elapsed / duration));  // <- FIX
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        rb.MovePosition(target);  // <- zorgt dat hij eindigt op juiste plek
+        cantKnockBack = false;
+    }
+
+    IEnumerator iFrames()
+    {
+        canTakeDamage = false;
+        Debug.Log("iFrames active");
+        yield return new WaitForSeconds(.3f);
+        Debug.Log("iFrames de-active");
+        canTakeDamage = true;   
+    }
+
 }

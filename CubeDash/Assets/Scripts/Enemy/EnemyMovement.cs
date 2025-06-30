@@ -19,6 +19,8 @@ public class EnemyMovement : MonoBehaviour
     public float dashTimeElapsed = .2f;
     public float dashBuiltUp = .2f;
     private float dashTimer;
+
+    public LayerMask obstacle;
     public ParticleSystem dashParticles;
 
     private Vector3 targetPos;
@@ -35,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
     private void LateUpdate()
     {
 
-        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
 
         if (canDash)
         {
@@ -51,7 +53,16 @@ public class EnemyMovement : MonoBehaviour
                     startDashPos = gameObject.transform.position;
 
                     Vector3 direction = (player.transform.position - transform.position).normalized;
-                    targetDashPos = transform.position + direction * dashVelocity;
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, dashVelocity, obstacle);
+
+                    if (hit.collider != null)
+                    {
+                        targetDashPos = hit.point;
+                    }
+                    else
+                    {
+                        targetDashPos = transform.position + direction * dashVelocity;
+                    }
 
                     dashParticles.Play();
                     

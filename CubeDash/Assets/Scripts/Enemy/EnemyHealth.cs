@@ -33,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (playerMovement.isDashing == true)
+        if (playerMovement.isDashing == true && collision.gameObject.CompareTag("Player"))
         {
             TakeDamage(playerStats.attackAmount);
             hitParticle.Play();
@@ -57,6 +57,7 @@ public class EnemyHealth : MonoBehaviour
         LeanTween.scale(gameObject, new Vector3(0, 0, 0), .3f).setEaseSpring().setOnComplete(() =>
         {
             EnemySpawnManager.activeEnemies.Remove(gameObject);
+            GameManager.instance.RegisterEnemyKill();
             Destroy(gameObject);
         });
         

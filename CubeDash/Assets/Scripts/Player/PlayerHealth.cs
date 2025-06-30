@@ -17,6 +17,8 @@ public class PlayerHealth : MonoBehaviour
 
     public float dmgAmount = 1f;
 
+    private CameraShakeLean cameraShake = CameraShakeLean.instance;
+
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -69,13 +71,23 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (playerMovement.isDashing == false)
+            if (playerMovement.isDashing == false && playerMovement.cantKnockBack == false && playerMovement.canTakeDamage == true)
             {
+
                 TakeDamage(dmgAmount);
+                CameraShakeLean.instance.ImpactShake();
                 Debug.Log("took dmg");
+
+                Vector2 direction = (transform.position - collision.transform.position).normalized;
+                float force = playerMovement.knockBackForce;
+                float duration = .2f;
+
+                if (playerMovement.knockbackRoutine != null) StopCoroutine(playerMovement.knockbackRoutine);
+                playerMovement.knockbackRoutine = StartCoroutine(playerMovement.Knockback(direction, force, duration));
+
+
             }
         }
     }

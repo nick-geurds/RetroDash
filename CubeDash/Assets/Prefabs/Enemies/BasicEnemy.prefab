@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 620950493507572757}
   - component: {fileID: 8546072759500464241}
   - component: {fileID: 3906162378691362003}
+  - component: {fileID: -8216827976430967005}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Enemy
@@ -149,11 +150,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e9388d3132ad74cadb495086bb871d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
+  moveSpeed: 3
   canDash: 0
   dashInterval: 2
   dashVelocity: 3
   dashTimeElapsed: 0.2
+  dashBuiltUp: 0.2
+  obstacle:
+    serializedVersion: 2
+    m_Bits: 0
+  dashParticles: {fileID: 0}
 --- !u!114 &3906162378691362003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +177,33 @@ MonoBehaviour:
   hitParticle: {fileID: 2083680739401415671}
   scaleAmount: 0.5
   scaleDur: 1
+--- !u!50 &-8216827976430967005
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5156308172466458818}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1001 &1566043678793197998
 PrefabInstance:
   m_ObjectHideFlags: 0
