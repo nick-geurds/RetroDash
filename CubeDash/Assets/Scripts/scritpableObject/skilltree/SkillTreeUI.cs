@@ -26,6 +26,7 @@ public class SkillTreeUI : MonoBehaviour
     private Dictionary<SkillUpgrade, UpgradeButtonUI> buttonDict = new();
     private List<LineConnection> allLines = new List<LineConnection>();
 
+
     void Start()
     {
         treeManager.Initialize();
@@ -155,6 +156,7 @@ public class SkillTreeUI : MonoBehaviour
 
     void LateUpdate()
     {
+        // UI layering
         lineContainer.SetAsFirstSibling();
         buttonContainer.SetAsLastSibling();
 
@@ -242,11 +244,24 @@ public class SkillTreeUI : MonoBehaviour
     void ConfirmPurchase()
     {
         Debug.Log("Confirm clicked!");
+
         if (selectedUpgrade != null && treeManager.CanUnlock(selectedUpgrade))
         {
             treeManager.Unlock(selectedUpgrade);
             UpdateUI();
+
+            //  HIER koppel je de SkillTree progress door naar de UpgradeManager
+            if (UpgradeManager.Instance != null)
+            {
+                UpgradeManager.Instance.SyncWithSkillTree(treeManager);
+                Debug.Log("[SkillTreeUI] UpgradeManager gesynchroniseerd met skill tree progress.");
+            }
+            else
+            {
+                Debug.LogWarning("[SkillTreeUI] UpgradeManager.Instance is null!");
+            }
         }
+
         confirmationPanel.SetActive(false);
     }
 

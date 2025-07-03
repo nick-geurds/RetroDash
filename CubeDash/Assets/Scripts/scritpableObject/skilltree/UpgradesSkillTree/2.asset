@@ -20,3 +20,5 @@ MonoBehaviour:
   unlocksAfterThis:
   - {fileID: 11400000, guid: 5b330d5060fddfa489d7bb16fd8ca622, type: 2}
   uiPosition: {x: 250, y: 250}
+  upgradeType: 1
+  upgradeValue: 1

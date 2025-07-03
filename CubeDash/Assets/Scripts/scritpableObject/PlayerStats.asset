@@ -15,5 +15,5 @@ MonoBehaviour:
   attackAmount: 1
   maxHealth: 5
   dashDis: 8
-  dashInterval: 0.8
-  dashSpeed: 60
+  dashInterval: 1
+  dashSpeed: 50

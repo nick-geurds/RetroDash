@@ -186,4 +186,9 @@ public class SkillTreeManager : MonoBehaviour
         return unlockedUpgrades.Contains(upgrade) || availableUpgrades.Contains(upgrade);
     }
 
+    public IEnumerable<SkillUpgrade> GetUnlockedUpgrades()
+    {
+        return unlockedUpgrades;
+    }
+
 }

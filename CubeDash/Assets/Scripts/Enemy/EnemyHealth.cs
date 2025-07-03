@@ -57,7 +57,7 @@ public class EnemyHealth : MonoBehaviour
         LeanTween.scale(gameObject, new Vector3(0, 0, 0), .3f).setEaseSpring().setOnComplete(() =>
         {
             EnemySpawnManager.activeEnemies.Remove(gameObject);
-            GameManager.instance.RegisterEnemyKill();
+            GameManager.Instance.RegisterEnemyKill();
             Destroy(gameObject);
         });
         

@@ -1,10 +1,9 @@
-using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public PlayerStatsScriptableObject stats;
+    private PlayerStats stats;
 
     [HideInInspector] public Coroutine knockbackRoutine;
 
@@ -45,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
+        stats = GetComponent<PlayerStats>(); //  hier haal je de runtime component op
+
         orgColor = playerSprite.color;
         orgScale = transform.localScale;
 
@@ -65,15 +66,12 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(changeSpritToWhite());
                 didAnimUp = true;
             }
-            
-            
         }
 
         if (!isDashing && canDash)
         {
             if (isForPhone)
             {
-                //  TOUCH INPUT
                 if (Input.touchCount > 0)
                 {
                     Touch touch = Input.GetTouch(0);
@@ -97,9 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
                             RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDir, stats.dashDis, obstacle);
 
-                            dashTargetPos = hit.collider != null ?
-                                hit.point :
-                                transform.position + launchDir * stats.dashDis;
+                            dashTargetPos = hit.collider != null ? hit.point : transform.position + launchDir * stats.dashDis;
 
                             dashParticles.Play();
 
@@ -114,7 +110,6 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                
                 if (Input.GetMouseButtonDown(0))
                 {
                     if (canDash)
@@ -125,14 +120,12 @@ public class PlayerMovement : MonoBehaviour
                         startTouch = Camera.main.ScreenToWorldPoint(mousePos);
                         startTouch.z = 0;
                     }
-                   
                 }
 
                 if (Input.GetMouseButtonUp(0) && readyToDash)
                 {
                     if (canDash)
                     {
-
                         Vector3 mousePos = Input.mousePosition;
                         mousePos.z = 10;
                         endTouch = Camera.main.ScreenToWorldPoint(mousePos);
@@ -143,24 +136,12 @@ public class PlayerMovement : MonoBehaviour
                         if (swipe.magnitude > touchThershold)
                         {
                             Vector3 launchDirPC = swipe.normalized;
-                            dashStartPos = gameObject.transform.position;
+                            dashStartPos = transform.position;
 
                             RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDirPC, stats.dashDis, obstacle);
-
-
-                            if (hit.collider != null)
-                            {
-                                dashTargetPos = hit.point;
-                            }
-                            else
-                            {
-                                dashTargetPos = transform.position + launchDirPC * stats.dashDis;
-                            }
-
-                            
+                            dashTargetPos = hit.collider != null ? hit.point : transform.position + launchDirPC * stats.dashDis;
 
                             dashParticles.Play();
-                            
 
                             StartCoroutine(Dash());
 
@@ -169,7 +150,6 @@ public class PlayerMovement : MonoBehaviour
                             readyToDash = false;
                         }
                     }
-                   
                 }
             }
         }
@@ -194,17 +174,14 @@ public class PlayerMovement : MonoBehaviour
         while (t < 1f)
         {
             t += Time.deltaTime / dashDuration;
-            gameObject.transform.position = Vector3.Lerp(dashStartPos, dashTargetPos, t);
-
+            transform.position = Vector3.Lerp(dashStartPos, dashTargetPos, t);
             yield return null;
         }
+
         dashParticles.Stop();
-
-        gameObject.transform.position = dashTargetPos;
-
+        transform.position = dashTargetPos;
         isDashing = false;
         didAnimUp = false;
-
     }
 
     IEnumerator changeSpritToWhite()
@@ -222,30 +199,24 @@ public class PlayerMovement : MonoBehaviour
         Vector3 start = transform.position;
         Vector3 target = start + (Vector3)(direction.normalized * distance);
 
-        Debug.Log("Knockback started!");
-        Debug.DrawLine(start, target, Color.red, 1f);
         float elapsed = 0f;
-
         StartCoroutine(iFrames());
 
         while (elapsed < duration)
         {
-            rb.MovePosition(Vector3.Lerp(start, target, elapsed / duration));  // <- FIX
+            rb.MovePosition(Vector3.Lerp(start, target, elapsed / duration));
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        rb.MovePosition(target);  // <- zorgt dat hij eindigt op juiste plek
+        rb.MovePosition(target);
         cantKnockBack = false;
     }
 
     IEnumerator iFrames()
     {
         canTakeDamage = false;
-        Debug.Log("iFrames active");
         yield return new WaitForSeconds(.3f);
-        Debug.Log("iFrames de-active");
-        canTakeDamage = true;   
+        canTakeDamage = true;
     }
-
 }

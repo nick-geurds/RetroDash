@@ -7,8 +7,8 @@ public class PlayerStatsScriptableObject : ScriptableObject
 
 {
     public float attackAmount = 1f;
-    public float maxHealth;
-    public float dashDis = .2f;
-    public float dashInterval = 1.5f;
-    public float dashSpeed = 10f;
+    public float maxHealth = 5;
+    public float dashDis = 8f;
+    public float dashInterval = 1f;
+    public float dashSpeed = 50f;
 }

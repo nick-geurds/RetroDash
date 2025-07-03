@@ -119,7 +119,7 @@ public class EnemySpawnManager : MonoBehaviour
                 {
                     InitializeWave(currentWaveIndex);
                     // Start coroutine hier of roep extern aan:
-                    StartCoroutine(GameManager.instance.ShowWaveText(waves[currentWaveIndex + 1].timeBetweenWaves));
+                    StartCoroutine(GameManager.Instance.ShowWaveText(waves[currentWaveIndex + 1].timeBetweenWaves));
                 }
                 else
                 {

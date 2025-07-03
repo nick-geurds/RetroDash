@@ -10,7 +10,21 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector] public float dashInterval;
     [HideInInspector] public float dashSpeed;
 
-    private void Start()
+    private void Awake()
+    {
+        ResetToBaseStats();
+
+        if (UpgradeManager.Instance != null)
+        {
+            UpgradeManager.Instance.ApplyUpgradesTo(this);
+        }
+        else
+        {
+            Debug.LogWarning("UpgradeManager not found.");
+        }
+    }
+
+    public void ResetToBaseStats()
     {
         attackAmount = playerStatsSO.attackAmount;
         maxHealth = playerStatsSO.maxHealth;
@@ -18,4 +32,5 @@ public class PlayerStats : MonoBehaviour
         dashInterval = playerStatsSO.dashInterval;
         dashSpeed = playerStatsSO.dashSpeed;
     }
+    
 }
