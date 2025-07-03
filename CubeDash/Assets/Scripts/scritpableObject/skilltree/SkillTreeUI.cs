@@ -1,12 +1,23 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public class SkillTreeUI : MonoBehaviour
 {
     public SkillTreeManager treeManager;
     public GameObject upgradeButtonPrefab;
     public GameObject linePrefab;
+
+    public GameObject confirmationPanel;
+    public TextMeshProUGUI confirmationTitle;
+    public TextMeshProUGUI confirmationDescription;
+    public Button confirmButton;
+    public Button cancelButton;
+
+    public RectTransform confirmationPanelRect;
+
+    private SkillUpgrade selectedUpgrade;
 
     public RectTransform contentParent;
     public RectTransform lineContainer;    // apart object in je Canvas
@@ -153,7 +164,7 @@ public class SkillTreeUI : MonoBehaviour
         }
     }
 
-    private HashSet<SkillUpgrade> CalculateVisibleUpgradesWithDepthLimit(int maxDepth = 2)
+    private HashSet<SkillUpgrade> CalculateVisibleUpgradesWithDepthLimit(int maxDepth = 3)
     {
         var visible = new HashSet<SkillUpgrade>();
 
@@ -194,6 +205,49 @@ public class SkillTreeUI : MonoBehaviour
     }
 
 
+    public void OnUpgradeSelected(SkillUpgrade upgrade)
+    {
+        selectedUpgrade = upgrade;
+        confirmationTitle.text = upgrade.upgradeName;
+        confirmationDescription.text = upgrade.description;
+
+        // Zoek de button UI en neem de positie daarvan
+        if (buttonDict.TryGetValue(upgrade, out var btnUI))
+        {
+            Vector3 worldPos = btnUI.transform.position;
+
+            // Zet de panel positie net boven de knop (in canvas-ruimte)
+            Vector3 panelPos = worldPos + new Vector3(0, btnUI.GetComponent<RectTransform>().rect.height * 0.6f, 0);
+
+            // Zet de panel positie
+            confirmationPanelRect.position = panelPos;
+        }
+
+        confirmationPanel.SetActive(true);
+
+        confirmButton.onClick.RemoveAllListeners();
+        confirmButton.onClick.AddListener(() => ConfirmPurchase());
+
+        cancelButton.onClick.RemoveAllListeners();
+        cancelButton.onClick.AddListener(() => CancelPurchase());
+    }
+
+
+
+    void ConfirmPurchase()
+    {
+        if (selectedUpgrade != null && treeManager.CanUnlock(selectedUpgrade))
+        {
+            treeManager.Unlock(selectedUpgrade);
+            UpdateUI();
+        }
+        confirmationPanel.SetActive(false);
+    }
+
+    void CancelPurchase()
+    {
+        confirmationPanel.SetActive(false);
+    }
 
 
 
