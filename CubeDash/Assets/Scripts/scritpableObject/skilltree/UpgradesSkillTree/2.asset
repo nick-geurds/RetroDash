@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 2
   m_EditorClassIdentifier: 
   upgradeIndex: 2
-  upgradeName: 'HP Upgrade 1 '
+  upgradeName: HP 1
   description: Get +1 more hitpoint
   symbol: {fileID: -1765393202716223932, guid: 2b318c3a79396bb44b09ca4466ba90a2, type: 3}
   isUnlockedAtStart: 0

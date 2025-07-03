@@ -204,23 +204,29 @@ public class SkillTreeUI : MonoBehaviour
         return visible;
     }
 
-
     public void OnUpgradeSelected(SkillUpgrade upgrade)
     {
         selectedUpgrade = upgrade;
         confirmationTitle.text = upgrade.upgradeName;
         confirmationDescription.text = upgrade.description;
 
-        // Zoek de button UI en neem de positie daarvan
         if (buttonDict.TryGetValue(upgrade, out var btnUI))
         {
             Vector3 worldPos = btnUI.transform.position;
 
-            // Zet de panel positie net boven de knop (in canvas-ruimte)
-            Vector3 panelPos = worldPos + new Vector3(0, btnUI.GetComponent<RectTransform>().rect.height * 0.6f, 0);
+            RectTransform canvasRect = confirmationPanelRect.parent.GetComponent<RectTransform>();
+            Vector2 localPoint;
 
-            // Zet de panel positie
-            confirmationPanelRect.position = panelPos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, Camera.main.WorldToScreenPoint(worldPos), Camera.main, out localPoint);
+
+            // Bereken de offset: 
+            float buttonHeight = btnUI.GetComponent<RectTransform>().rect.height;
+            float panelHeight = confirmationPanelRect.rect.height;
+
+            // Zet panel boven de knop met voldoende ruimte (panel hoogte + kleine marge)
+            float offsetY = buttonHeight * 0.5f + panelHeight * 0.5f + 20f; // 10 is marge, pas aan naar wens
+
+            confirmationPanelRect.localPosition = localPoint + new Vector2(0, offsetY);
         }
 
         confirmationPanel.SetActive(true);
@@ -232,10 +238,10 @@ public class SkillTreeUI : MonoBehaviour
         cancelButton.onClick.AddListener(() => CancelPurchase());
     }
 
-
-
+    // Wordt aangeroepen als speler op confirm knop drukt: unlock de upgrade
     void ConfirmPurchase()
     {
+        Debug.Log("Confirm clicked!");
         if (selectedUpgrade != null && treeManager.CanUnlock(selectedUpgrade))
         {
             treeManager.Unlock(selectedUpgrade);
@@ -246,10 +252,7 @@ public class SkillTreeUI : MonoBehaviour
 
     void CancelPurchase()
     {
+        Debug.Log("Cancel clicked!");
         confirmationPanel.SetActive(false);
     }
-
-
-
-
 }

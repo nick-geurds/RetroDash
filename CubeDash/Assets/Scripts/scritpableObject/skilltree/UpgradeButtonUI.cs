@@ -14,7 +14,10 @@ public class UpgradeButtonUI : MonoBehaviour
         upgrade = upgradeData;
         nameText.text = upgrade.upgradeName;
         backgroundImage.sprite = upgrade.symbol;
-        button.onClick.AddListener(() => treeUI.OnUpgradeClicked(upgrade));
+
+        button.onClick.RemoveAllListeners(); // Heel belangrijk, anders stapelt de listener zich op
+        button.onClick.AddListener(() => treeUI.OnUpgradeSelected(upgrade)); // niet direct unlocken maar eerst selecteren
+
         transform.localPosition = upgrade.uiPosition;
     }
 
