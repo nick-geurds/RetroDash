@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public PlayerStatsScriptableObject stats;
+
     [Header("health settings")]
     public float currentHealth;
     public Image[] hearts;
@@ -13,7 +15,6 @@ public class PlayerHealth : MonoBehaviour
     
 
     private PlayerMovement playerMovement;
-    private PlayerStats playerStats;
 
     public float dmgAmount = 1f;
 
@@ -22,21 +23,20 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
-        playerStats = GetComponent<PlayerStats>();
 
-        currentHealth = playerStats.maxHealth;
+        currentHealth = stats.maxHealth;
     }
 
     private void Update()
     {
-        if (currentHealth > playerStats.maxHealth)
+        if (currentHealth > stats.maxHealth)
         {
-            currentHealth = playerStats.maxHealth;
+            currentHealth = stats.maxHealth;
         }
 
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < playerStats.maxHealth)
+            if (i < stats.maxHealth)
             {
                 float heartHP = currentHealth - i;
 
@@ -56,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
             }
             
 
-            if (i < playerStats.maxHealth)
+            if (i < stats.maxHealth)
             {
                 hearts[i].enabled = true;
             }

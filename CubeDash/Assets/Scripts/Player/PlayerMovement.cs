@@ -4,6 +4,7 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public PlayerStatsScriptableObject stats;
 
     [HideInInspector] public Coroutine knockbackRoutine;
 
@@ -38,8 +39,6 @@ public class PlayerMovement : MonoBehaviour
     private bool readyToDash = false;
     private bool didAnimUp = true;
 
-    private PlayerStats playerStats;
-
     [HideInInspector] public bool canTakeDamage = true;
 
     private void Start()
@@ -47,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         orgColor = playerSprite.color;
-        playerStats = GetComponent<PlayerStats>();
         orgScale = transform.localScale;
 
         cantKnockBack = false;
@@ -57,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     {
         dashTimer += Time.deltaTime;
 
-        if (dashTimer >= playerStats.dashInterval)
+        if (dashTimer >= stats.dashInterval)
         {
             canDash = true;
 
@@ -97,11 +95,11 @@ public class PlayerMovement : MonoBehaviour
                             Vector3 launchDir = swipe.normalized;
                             dashStartPos = transform.position;
 
-                            RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDir, playerStats.dashDis, obstacle);
+                            RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDir, stats.dashDis, obstacle);
 
                             dashTargetPos = hit.collider != null ?
                                 hit.point :
-                                transform.position + launchDir * playerStats.dashDis;
+                                transform.position + launchDir * stats.dashDis;
 
                             dashParticles.Play();
 
@@ -147,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
                             Vector3 launchDirPC = swipe.normalized;
                             dashStartPos = gameObject.transform.position;
 
-                            RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDirPC, playerStats.dashDis, obstacle);
+                            RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDirPC, stats.dashDis, obstacle);
 
 
                             if (hit.collider != null)
@@ -156,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
                             }
                             else
                             {
-                                dashTargetPos = transform.position + launchDirPC * playerStats.dashDis;
+                                dashTargetPos = transform.position + launchDirPC * stats.dashDis;
                             }
 
                             
@@ -189,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         canDash = false;
         float dashDistance = Vector3.Distance(dashStartPos, dashTargetPos);
-        float dashDuration = dashDistance / playerStats.dashSpeed;
+        float dashDuration = dashDistance / stats.dashSpeed;
 
         float t = 0f;
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4110297210018057783}
   - component: {fileID: 4892302994398193668}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Traingle enemie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 1735750802198474047}
   - component: {fileID: 3650875787767559347}
   - component: {fileID: 710978302675610943}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Projectile
   m_TagString: Enemy
   m_Icon: {fileID: 0}

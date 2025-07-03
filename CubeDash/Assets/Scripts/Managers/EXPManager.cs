@@ -4,6 +4,9 @@ public class EXPManager : MonoBehaviour
 {
     public static EXPManager instance;
 
+    public bool debugMode;
+    public int startXP = 10000;
+
     private const string ExpKey = "PlayerTotalEXP";
     public int totalExp { get; private set; }
 
@@ -20,12 +23,21 @@ public class EXPManager : MonoBehaviour
             return;
         }
 
+        
+
         instance = this;
         DontDestroyOnLoad(gameObject);
 
         totalExp = PlayerPrefs.GetInt(ExpKey, 0);
     }
 
+    private void Start()
+    {
+        if (debugMode)
+        {
+            totalExp += startXP;
+        }
+    }
     public void AddEXP(int amount)
     {
         totalExp += amount;
