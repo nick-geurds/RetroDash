@@ -7,6 +7,8 @@ public class UpgradeManager : MonoBehaviour
 
     private List<SkillUpgrade> activeUpgrades = new List<SkillUpgrade>();
 
+    public bool IsInitialized => activeUpgrades.Count > 0;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -24,6 +26,12 @@ public class UpgradeManager : MonoBehaviour
         activeUpgrades.Clear();
         activeUpgrades.AddRange(skillTree.GetUnlockedUpgrades());
         Debug.Log($"[UpgradeManager] Synced {activeUpgrades.Count} upgrades from SkillTreeManager");
+
+        foreach (var u in skillTree.GetUnlockedUpgrades())
+        {
+            Debug.Log($"[UpgradeManager] Loaded upgrade from saved data: {u.upgradeName}");
+        }
+
     }
 
     public void ApplyUpgradesTo(PlayerStats stats)

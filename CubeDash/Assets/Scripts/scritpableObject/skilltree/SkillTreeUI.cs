@@ -154,17 +154,21 @@ public class SkillTreeUI : MonoBehaviour
         }
     }
 
-    void LateUpdate()
-    {
-        // UI layering
-        lineContainer.SetAsFirstSibling();
-        buttonContainer.SetAsLastSibling();
+   void LateUpdate()
+{
+    if (transform == null || !gameObject.activeInHierarchy)
+        return;
 
-        foreach (var pair in buttonDict)
-        {
-            pair.Value.transform.SetAsLastSibling();
-        }
+    // alleen logica uitvoeren als object nog geldig is
+    try
+    {
+        transform.SetAsFirstSibling(); // lijn naar voren brengen
     }
+    catch (MissingReferenceException)
+    {
+        Debug.LogWarning("SkillTreeUI is missing references, skipping LateUpdate");
+    }
+}
 
     private HashSet<SkillUpgrade> CalculateVisibleUpgradesWithDepthLimit(int maxDepth = 3)
     {

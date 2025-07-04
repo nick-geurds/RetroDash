@@ -4,6 +4,8 @@ using System.Linq;
 
 public class SkillTreeManager : MonoBehaviour
 {
+    public static SkillTreeManager Instance { get; private set; }
+
     public SkillTree skillTree;        // ScriptableObject met alle upgrades
     public SkillTreeUI skillTreeUI;    // UI controller
 
@@ -12,6 +14,19 @@ public class SkillTreeManager : MonoBehaviour
     private HashSet<int> unlockedIndices = new HashSet<int>();
 
     private const string PlayerPrefsKey = "SkillTreeUnlockedIndices";
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); // voorkomt duplicaten
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject); // blijft bestaan tussen scenes
+    }
+
 
     // Wordt aangeroepen bij scene load om progress te laden
     public void Initialize()
@@ -47,6 +62,16 @@ public class SkillTreeManager : MonoBehaviour
         UpdateAvailableUpgrades();
 
         skillTreeUI?.UpdateUI();
+
+        if (skillTreeUI != null && skillTreeUI.gameObject.scene.isLoaded)
+        {
+            skillTreeUI.UpdateUI();
+        }
+        else
+        {
+            Debug.Log("[SkillTreeManager] UI not present in this scene. Skipping UpdateUI.");
+            skillTreeUI = null; // voorkom verdere crashes
+        }
     }
 
     // Berekent welke upgrades beschikbaar zijn om te unlocken, gebaseerd op unlocked upgrades
@@ -191,4 +216,8 @@ public class SkillTreeManager : MonoBehaviour
         return unlockedUpgrades;
     }
 
+    public void SetSkillTreeUI(SkillTreeUI ui)
+    {
+        skillTreeUI = ui;
+    }
 }
