@@ -36,19 +36,23 @@ public class GameManager : MonoBehaviour
 
     private bool gameIsOver = false;
 
-    private void Start()
+
+    private IEnumerator Start()
     {
         waveText.text = $"WAVE " + (enemySpawnManager.currentWaveIndex + 1).ToString();
         player = GameObject.Find("Player");
+
+        // Wacht 1 frame zodat alle componenten zijn geïnitialiseerd
+        yield return null;
+
         playerHealth = player.GetComponent<PlayerHealth>();
 
         waveText.enabled = false;
-
         playTime = 0f;
         enemiesKilled = 0;
 
         StartCoroutine(ShowWaveText(3));
-        
+
     }
 
     private void Update()

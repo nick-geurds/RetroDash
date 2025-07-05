@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour
 {
     public TMP_Text xpText;
-
+    public SkillTreeManager skillTreeManager;
     private void OnEnable()
     {
         if (EXPManager.instance != null)
@@ -36,5 +36,9 @@ public class MainMenuManager : MonoBehaviour
     {
         if (EXPManager.instance != null)
             EXPManager.instance.ResetAll();
+    }
+    public void ResetSkillTree()
+    {
+        GameResetHelper.FullReset(skillTreeManager);
     }
 }

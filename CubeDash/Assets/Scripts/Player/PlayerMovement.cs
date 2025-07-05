@@ -40,17 +40,44 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector] public bool canTakeDamage = true;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
-        stats = GetComponent<PlayerStats>(); //  hier haal je de runtime component op
+        stats = GetComponent<PlayerStats>(); // Zorg dat stats hier wordt toegewezen
 
         orgColor = playerSprite.color;
         orgScale = transform.localScale;
 
         cantKnockBack = false;
     }
+
+    private void OnEnable()
+    {
+        PlayerStats.OnPlayerStatsInitialized += OnPlayerStatsInitialized;
+    }
+
+    private void OnDisable()
+    {
+        PlayerStats.OnPlayerStatsInitialized -= OnPlayerStatsInitialized;
+    }
+
+    private void OnPlayerStatsInitialized()
+    {
+        // Deze method wordt aangeroepen zodra PlayerStats klaar is met initialiseren
+
+        // Stel alle variabelen opnieuw in, gebaseerd op stats
+        dashTimer = 0f;
+        canDash = true;
+
+        knockBackForce = 3f; // eventueel ook uit stats halen als je dat wil
+
+        // andere properties die afhangen van stats:
+        // je kan hier eventueel extra initialisatie doen
+        Debug.Log("[PlayerMovement] Player stats initialized. Ready to use dashInterval: " + stats.dashInterval + ", dashSpeed: " + stats.dashSpeed);
+    }
+
+
 
     private void Update()
     {

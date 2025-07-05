@@ -1,27 +1,38 @@
+using System;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public static event Action OnPlayerStatsInitialized;
+
     public PlayerStatsScriptableObject playerStatsSO;
 
-    [HideInInspector] public float attackAmount;
-    [HideInInspector] public float maxHealth;
-    [HideInInspector] public float dashDis;
-    [HideInInspector] public float dashInterval;
-    [HideInInspector] public float dashSpeed;
+    public float attackAmount;
+    public float maxHealth;
+    public float dashDis;
+    public float dashInterval;
+    public float dashSpeed;
 
     private void Awake()
     {
         ResetToBaseStats();
+        Debug.Log("[PlayerStats] Base stats set in Awake. maxHealth = " + maxHealth);
+    }
 
-        if (UpgradeManager.Instance != null)
+    private void Start()
+    {
+        if (UnlockedUpgradeData.Instance != null)
         {
-            UpgradeManager.Instance.ApplyUpgradesTo(this);
+            UnlockedUpgradeData.Instance.ApplyTo(this);
+            Debug.Log("[PlayerStats] Upgrades applied in Start. Final maxHealth = " + maxHealth);
         }
         else
         {
-            Debug.LogWarning("UpgradeManager not found.");
+            Debug.LogWarning("[PlayerStats] UnlockedUpgradeData instance not found in Start()");
         }
+
+        // Trigger event dat PlayerStats klaar zijn om gebruikt te worden
+        OnPlayerStatsInitialized?.Invoke();
     }
 
     public void ResetToBaseStats()
@@ -31,6 +42,7 @@ public class PlayerStats : MonoBehaviour
         dashDis = playerStatsSO.dashDis;
         dashInterval = playerStatsSO.dashInterval;
         dashSpeed = playerStatsSO.dashSpeed;
+
+        Debug.Log("[PlayerStats] Stats reset to base: maxHealth = " + maxHealth);
     }
-    
 }

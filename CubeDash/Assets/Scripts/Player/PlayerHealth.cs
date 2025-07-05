@@ -16,12 +16,26 @@ public class PlayerHealth : MonoBehaviour
 
     public float dmgAmount = 1f;
 
-    private void Start()
+    private void Awake()
     {
+        stats = GetComponent<PlayerStats>();
         playerMovement = GetComponent<PlayerMovement>();
-        stats = GetComponent<PlayerStats>(); //  Haal PlayerStats component op
+    }
 
+    private void OnEnable()
+    {
+        PlayerStats.OnPlayerStatsInitialized += InitializeHealth;
+    }
+
+    private void OnDisable()
+    {
+        PlayerStats.OnPlayerStatsInitialized -= InitializeHealth;
+    }
+
+    private void InitializeHealth()
+    {
         currentHealth = stats.maxHealth;
+        Debug.Log("[PlayerHealth] currentHealth initialized to stats.maxHealth = " + currentHealth);
     }
 
     private void Update()

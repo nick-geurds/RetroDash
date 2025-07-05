@@ -70,6 +70,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void Update()
     {
+
         if (currentWaveIndex >= waves.Length)
         {
             // Alle waves zijn gedaan, niks meer spawnen

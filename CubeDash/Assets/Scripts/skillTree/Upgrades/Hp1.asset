@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32671fec6e170c84ab4fd4e0eb289994, type: 3}
+  m_Name: Hp1
+  m_EditorClassIdentifier: 
+  upgradeIndex: 1
+  upgradeName: Health 1
+  description: Health +1
+  symbol: {fileID: -1765393202716223932, guid: 2b318c3a79396bb44b09ca4466ba90a2, type: 3}
+  isUnlockedAtStart: 0
+  unlocksAfterThis:
+  - {fileID: 11400000, guid: 6bfcbea0542bd7444bb8b5efbeb726d6, type: 2}
+  uiPosition: {x: 250, y: 250}
+  upgradeType: 1
+  upgradeValue: 1
