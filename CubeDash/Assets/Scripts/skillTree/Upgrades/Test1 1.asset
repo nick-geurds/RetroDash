@@ -21,4 +21,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 10511ea36a06c17429a7d684c7f6a1d3, type: 2}
   uiPosition: {x: 250, y: 500}
   upgradeType: 1
-  upgradeValue: 1
+  upgradeValue: 10

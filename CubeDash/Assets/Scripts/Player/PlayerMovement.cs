@@ -201,15 +201,17 @@ public class PlayerMovement : MonoBehaviour
         while (t < 1f)
         {
             t += Time.deltaTime / dashDuration;
-            transform.position = Vector3.Lerp(dashStartPos, dashTargetPos, t);
+            Vector3 lerpPos = Vector3.Lerp(dashStartPos, dashTargetPos, t);
+            transform.position = ArenaBounds.Instance.ClampPosition(lerpPos);
             yield return null;
         }
 
         dashParticles.Stop();
-        transform.position = dashTargetPos;
+        transform.position = ArenaBounds.Instance.ClampPosition(dashTargetPos);
         isDashing = false;
         didAnimUp = false;
     }
+
 
     IEnumerator changeSpritToWhite()
     {
@@ -224,20 +226,39 @@ public class PlayerMovement : MonoBehaviour
 
         cantKnockBack = true;
         Vector3 start = transform.position;
-        Vector3 target = start + (Vector3)(direction.normalized * distance);
+
+        Vector3 target = GetMaxKnockbackTarget(start, direction, distance);
 
         float elapsed = 0f;
         StartCoroutine(iFrames());
 
         while (elapsed < duration)
         {
-            rb.MovePosition(Vector3.Lerp(start, target, elapsed / duration));
+            Vector3 nextPos = Vector3.Lerp(start, target, elapsed / duration);
+            rb.MovePosition(nextPos);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         rb.MovePosition(target);
         cantKnockBack = false;
+    }
+
+    Vector3 GetMaxKnockbackTarget(Vector3 startPos, Vector2 direction, float maxDistance)
+    {
+        // Begin met maximaal de volledige knockback afstand
+        Vector3 potentialTarget = startPos + (Vector3)(direction.normalized * maxDistance);
+
+        // Clamp dit punt binnen de arena bounds
+        Vector3 clampedTarget = ArenaBounds.Instance.ClampPosition(potentialTarget);
+
+        // Nu is clampedTarget gegarandeerd binnen arena
+
+        // Bereken het daadwerkelijke knockback distance (korter dan maxDistance als tegen muur)
+        float actualDistance = Vector3.Distance(startPos, clampedTarget);
+
+        // Retourneer de positie binnen bounds
+        return clampedTarget;
     }
 
     IEnumerator iFrames()

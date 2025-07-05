@@ -36,21 +36,35 @@ public class EnemyMovement : MonoBehaviour
 
     private void LateUpdate()
     {
+        // Bereken gewenste volgende positie richting speler
+        Vector3 desiredNextPos = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
 
-        gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+        // Clamp de gewenste positie binnen de arena boundaries
+        Vector3 clampedNextPos = ArenaBounds.Instance.ClampPosition(desiredNextPos);
+
+        // Check of de clamped positie gelijk is aan de gewenste positie
+        if (clampedNextPos == desiredNextPos)
+        {
+            // Beweging is binnen de arena, dus zet positie
+            transform.position = clampedNextPos;
+        }
+        else
+        {
+            // Enemy zou buiten de arena bewegen, dus niet verplaatsen.
+            // Je kunt hier eventueel extra logica toevoegen om langs muren te patrouilleren of andere acties te doen.
+        }
+
+        // DASH LOGICA (onveranderd), maar zorg dat dash target ook binnen arena blijft
 
         if (canDash)
         {
-           
-
             dashTimer += Time.deltaTime;
 
             if (dashTimer > dashInterval)
             {
-                canDashAgain = true;
                 if (canDashAgain)
                 {
-                    startDashPos = gameObject.transform.position;
+                    startDashPos = transform.position;
 
                     Vector3 direction = (player.transform.position - transform.position).normalized;
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, dashVelocity, obstacle);
@@ -64,14 +78,16 @@ public class EnemyMovement : MonoBehaviour
                         targetDashPos = transform.position + direction * dashVelocity;
                     }
 
+                    // Clamp dash target binnen arena
+                    targetDashPos = ArenaBounds.Instance.ClampPosition(targetDashPos);
+
                     dashParticles.Play();
-                    
+
                     StartCoroutine(EnemyDash());
 
                     dashTimer = 0;
                     canDashAgain = false;
                 }
-               
             }
         }
     }
@@ -88,19 +104,20 @@ public class EnemyMovement : MonoBehaviour
 
         yield return new WaitForSeconds(dashBuiltUp / 3);
         spriteRenderer.color = orgColor;
+
         float t = 0f;
 
         while (t < 1f)
         {
             t += Time.deltaTime / dashTimeElapsed;
-            transform.position = Vector3.Lerp(startDashPos, targetDashPos, t);
-
+            Vector3 lerpPos = Vector3.Lerp(startDashPos, targetDashPos, t);
+            transform.position = ArenaBounds.Instance.ClampPosition(lerpPos);
             yield return null;
         }
 
         dashParticles.Stop();
+        transform.position = ArenaBounds.Instance.ClampPosition(targetDashPos);
         dashTimer = 0f;
-
-        transform.position = targetDashPos;
     }
+
 }

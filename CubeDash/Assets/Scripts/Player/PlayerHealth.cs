@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     public Sprite fullHeart;
     public Sprite halfHeart;
     public Sprite emptyHeart;
+    private SpriteRenderer sprite;
+    private Color orgColor;
 
     private PlayerMovement playerMovement;
 
@@ -20,6 +23,10 @@ public class PlayerHealth : MonoBehaviour
     {
         stats = GetComponent<PlayerStats>();
         playerMovement = GetComponent<PlayerMovement>();
+
+        sprite = GetComponent<SpriteRenderer>();
+        orgColor = sprite.color;
+        
     }
 
     private void OnEnable()
@@ -89,6 +96,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        StartCoroutine(ColorChange());
         currentHealth -= amount;
 
         if (currentHealth <= 0)
@@ -96,5 +104,13 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("player died");
             playerMovement.enabled = false;
         }
+    }
+
+    IEnumerator ColorChange()
+    {
+        yield return new WaitForSeconds(0.05f);
+        sprite.color = Color.white;
+        yield return new WaitForSeconds(0.2f);
+        sprite.color = orgColor;
     }
 }
