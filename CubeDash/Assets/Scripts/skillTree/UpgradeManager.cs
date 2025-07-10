@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using static SkillUpgrade;
+using UnityEngine.InputSystem;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -63,6 +65,12 @@ public class UpgradeManager : MonoBehaviour
                     break;
                 case SkillUpgrade.SkillUpgradeType.IncreaseDashSpeed:
                     stats.dashSpeed += upgrade.upgradeValue;
+                    break;
+                case SkillUpgrade.SkillUpgradeType.EnableFireProjectilesOnDamage:
+                    stats.fireProjectilesOnDamage = upgrade.boolValue;
+                    break;
+                case SkillUpgrade.SkillUpgradeType.ProjectileCount:
+                    stats.damageProjectileCount += upgrade.intValue;
                     break;
             }
         }

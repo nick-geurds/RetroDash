@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public Coroutine knockbackRoutine;
 
     private Rigidbody2D rb;
+    private Collider2D col;
     private SpriteRenderer playerSprite;
     public bool isForPhone = false;
 
@@ -40,14 +41,26 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector] public bool canTakeDamage = true;
 
+    //[Header("Shield Push Settings")]
+    //public GameObject shieldPushPrefab;
+    //public float shieldPushDistanceMultiplier = 0.33f;
+
+    private PlayerDamageProjectileBurst projectileBurst;
+    private ShockwaveUpgrade shockwaveUpgrade;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         stats = GetComponent<PlayerStats>(); // Zorg dat stats hier wordt toegewezen
 
+        projectileBurst = GetComponent<PlayerDamageProjectileBurst>();
+        shockwaveUpgrade = GetComponent<ShockwaveUpgrade>();
+
         orgColor = playerSprite.color;
         orgScale = transform.localScale;
+
+        col = GetComponent<Collider2D>();
 
         cantKnockBack = false;
     }
@@ -184,6 +197,8 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator Dash()
     {
+        col.enabled = true;
+
         if (knockbackRoutine != null)
         {
             StopCoroutine(knockbackRoutine);
@@ -208,6 +223,22 @@ public class PlayerMovement : MonoBehaviour
 
         dashParticles.Stop();
         transform.position = ArenaBounds.Instance.ClampPosition(dashTargetPos);
+
+        Vector3 dashDir = (dashTargetPos - dashStartPos).normalized;
+
+        //// Shield push triggeren
+        //if (shieldPushPrefab != null)
+        //{
+        //    Quaternion rotation = Quaternion.LookRotation(Vector3.forward, -dashDir); // z-axis forward, y-axis naar dashrichting
+        //    GameObject shield = Instantiate(shieldPushPrefab, transform.position, rotation);
+        //    DashShieldPush shieldScript = shield.GetComponent<DashShieldPush>();
+        //    if (shieldScript != null)
+        //    {
+        //        shieldScript.moveDistance = stats.dashDis * shieldPushDistanceMultiplier;
+        //        shieldScript.Initialize(dashDir);
+        //    }
+        //}
+
         isDashing = false;
         didAnimUp = false;
     }
@@ -227,6 +258,8 @@ public class PlayerMovement : MonoBehaviour
         cantKnockBack = true;
         Vector3 start = transform.position;
 
+        col.enabled = false;
+
         Vector3 target = GetMaxKnockbackTarget(start, direction, distance);
 
         float elapsed = 0f;
@@ -239,6 +272,18 @@ public class PlayerMovement : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+
+        if (projectileBurst != null)
+        {
+            projectileBurst.TriggerProjectileBurst();
+        }
+
+        if (shockwaveUpgrade != null)
+        {
+            shockwaveUpgrade.TriggerShockwave();
+        }
+
+        col.enabled = true;
 
         rb.MovePosition(target);
         cantKnockBack = false;

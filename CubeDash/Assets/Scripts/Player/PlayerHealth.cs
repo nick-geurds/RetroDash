@@ -15,7 +15,11 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer sprite;
     private Color orgColor;
 
+
+    
+
     private PlayerMovement playerMovement;
+    
 
     public float dmgAmount = 1f;
 
@@ -23,6 +27,8 @@ public class PlayerHealth : MonoBehaviour
     {
         stats = GetComponent<PlayerStats>();
         playerMovement = GetComponent<PlayerMovement>();
+
+        
 
         sprite = GetComponent<SpriteRenderer>();
         orgColor = sprite.color;
@@ -98,6 +104,8 @@ public class PlayerHealth : MonoBehaviour
     {
         StartCoroutine(ColorChange());
         currentHealth -= amount;
+
+       
 
         if (currentHealth <= 0)
         {

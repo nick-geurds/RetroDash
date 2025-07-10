@@ -8,12 +8,14 @@ public class UpgradeButtonUI : MonoBehaviour
     public Button button;
     public Image backgroundImage;
     public TextMeshProUGUI nameText;
+    public Image upgradeSymbol;
 
     public void Setup(SkillUpgrade upgradeData, SkillTreeUI treeUI)
     {
         upgrade = upgradeData;
         nameText.text = upgrade.upgradeName;
-        backgroundImage.sprite = upgrade.symbol;
+        backgroundImage.sprite = upgrade.background;
+        upgradeSymbol.sprite = upgrade.upgradeSymbol;
 
         button.onClick.RemoveAllListeners(); // Heel belangrijk, anders stapelt de listener zich op
         button.onClick.AddListener(() => treeUI.OnUpgradeSelected(upgrade)); // niet direct unlocken maar eerst selecteren

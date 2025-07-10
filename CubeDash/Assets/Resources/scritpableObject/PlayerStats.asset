@@ -17,3 +17,7 @@ MonoBehaviour:
   dashDis: 8
   dashInterval: 1
   dashSpeed: 50
+  fireProjectilesOnDamage: 0
+  damageProjectileCount: 4
+  damageProjectilePrefab: {fileID: 6025437146935722718, guid: 1a653ed1042d91847be53a53a302a8fc, type: 3}
+  damageProjectileSpeed: 8

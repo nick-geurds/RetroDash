@@ -7,11 +7,24 @@ public class PlayerStats : MonoBehaviour
 
     public PlayerStatsScriptableObject playerStatsSO;
 
+    [Header("PlayerStats")]
     public float attackAmount;
     public float maxHealth;
     public float dashDis;
     public float dashInterval;
     public float dashSpeed;
+
+    [Header("Damage Projectile Settings")]
+    [HideInInspector] public bool fireProjectilesOnDamage;
+    [HideInInspector] public int damageProjectileCount;
+    [HideInInspector] public GameObject damageProjectilePrefab;
+    [HideInInspector] public float damageProjectileSpeed;
+
+    [Header("Shockwave Settings")]
+    public bool enableShockWave;
+    public float shockwaveRadius;
+    public float shockwaveStunDuration;
+    public float stunDuration;
 
     private void Awake()
     {
@@ -43,6 +56,14 @@ public class PlayerStats : MonoBehaviour
         dashInterval = playerStatsSO.dashInterval;
         dashSpeed = playerStatsSO.dashSpeed;
 
+        fireProjectilesOnDamage = playerStatsSO.fireProjectilesOnDamage;
+        damageProjectileCount = playerStatsSO.damageProjectileCount;
+        damageProjectileSpeed = playerStatsSO.damageProjectileSpeed;
+        damageProjectilePrefab = playerStatsSO.damageProjectilePrefab;
+
+        stunDuration = playerStatsSO.stunDuration;
+        shockwaveRadius = playerStatsSO.shockwaveRadius;
+        shockwaveStunDuration = playerStatsSO.shockwaveStunDuration;
         Debug.Log("[PlayerStats] Stats reset to base: maxHealth = " + maxHealth);
     }
 }

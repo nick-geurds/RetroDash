@@ -13,10 +13,12 @@ public class EnemyHealth : MonoBehaviour
 
 
     private GameObject player;
-    private PlayerMovement playerMovement;
-    private PlayerStats playerStats;
+    [HideInInspector] public PlayerMovement playerMovement;
+    [HideInInspector] public PlayerStats playerStats;
 
     private Vector3 orgScale;
+
+
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
         playerMovement = player.GetComponent<PlayerMovement>();
 
         currentHealth = maxHealth;
+        Debug.Log($"[EnemyHealth] Start: currentHealth set to {currentHealth}");
 
         orgScale = transform.localScale;
 
@@ -33,7 +36,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (playerMovement.isDashing == true && collision.gameObject.CompareTag("Player"))
+        if (playerMovement.isDashing == true && collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("PlayerBullets"))
         {
             TakeDamage(playerStats.attackAmount);
             hitParticle.Play();
@@ -45,6 +48,10 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= amuount;
         LeanTween.scale(gameObject, orgScale * scaleAmount, scaleDur).setEasePunch();
 
+        BossHealth bossHealth = this as BossHealth;
+        if (bossHealth != null)
+            bossHealth.UpdateHealthUI();
+
         if (currentHealth <= 0)
         {
             Die();
@@ -52,7 +59,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    void Die()
+    protected virtual void Die()
     {
         LeanTween.scale(gameObject, new Vector3(0, 0, 0), .3f).setEaseSpring().setOnComplete(() =>
         {
@@ -60,6 +67,5 @@ public class EnemyHealth : MonoBehaviour
             GameManager.Instance.RegisterEnemyKill();
             Destroy(gameObject);
         });
-        
     }
 }

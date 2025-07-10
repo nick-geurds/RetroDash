@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
+  - PlayerBullets
   layers:
   - Default
   - TransparentFX
@@ -50,6 +51,9 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1926905037
+    locked: 0
+  - name: CameraSortingLayer
+    uniqueID: 1071969963
     locked: 0
   m_RenderingLayers:
   - Default

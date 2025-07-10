@@ -12,13 +12,23 @@ public class SkillUpgrade : ScriptableObject
         IncreaseAttack,
         IncreaseDashDistance,
         ReduceDashCooldown,
-        IncreaseDashSpeed
+        IncreaseDashSpeed,
+
+        //Fire projectiles when taken damage
+        EnableFireProjectilesOnDamage,
+        ProjectileCount,
+
+        //shockwave when taken damage
+        EnableShosckWave,
+        ShockwaveRadius
+
     }
 
     public string upgradeName;
     public string description;
 
-    public Sprite symbol;
+    public Sprite upgradeSymbol;
+    public Sprite background;
 
     public bool isUnlockedAtStart;
 
@@ -29,6 +39,8 @@ public class SkillUpgrade : ScriptableObject
     public Vector2 uiPosition;
 
     public SkillUpgradeType upgradeType;
+    public bool boolValue = true;
+    public int intValue = 1;
     public float upgradeValue = 1f;
 
     public bool IsUnlocked => PlayerPrefs.GetInt("Upgrade_" + upgradeIndex, 0) == 1;
@@ -60,6 +72,18 @@ public class SkillUpgrade : ScriptableObject
                 break;
             case SkillUpgradeType.IncreaseDashSpeed:
                 stats.dashSpeed += upgradeValue;
+                break;
+            case SkillUpgradeType.EnableFireProjectilesOnDamage:
+                stats.fireProjectilesOnDamage = boolValue;
+                break;
+            case SkillUpgradeType.ProjectileCount:
+                stats.damageProjectileCount += intValue;
+                break;
+            case SkillUpgradeType.EnableShosckWave:
+                stats.enableShockWave = boolValue;
+                break;
+            case SkillUpgradeType.ShockwaveRadius:
+                stats.shockwaveRadius += upgradeValue;
                 break;
         }
     }
