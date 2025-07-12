@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 3014402495306121612}
   - component: {fileID: 4622332834342501035}
   - component: {fileID: 297183090795663036}
+  - component: {fileID: 4277468056147915673}
   m_Layer: 8
   m_Name: Sythe
   m_TagString: Enemy
@@ -499,6 +500,20 @@ PolygonCollider2D:
       - {x: -0.06785975, y: 3.2081792}
       - {x: -0.07416012, y: -0.05234742}
   m_UseDelaunayMesh: 0
+--- !u!114 &4277468056147915673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209692110811937798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56619127d224c83438e20f7b1598472f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  isHittable: 0
 --- !u!1 &7597379733826110621
 GameObject:
   m_ObjectHideFlags: 0

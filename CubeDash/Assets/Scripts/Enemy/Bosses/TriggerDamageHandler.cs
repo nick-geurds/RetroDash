@@ -9,11 +9,15 @@ public class TriggerDamageHandler : MonoBehaviour
     private BossHealth bossHealth;      // De referentie naar de BossHealth component
     private PlayerStats playerStats;    // De referentie naar de PlayerStats component
 
+    private Vector3 orgScale;
+
     private void Start()
     {
         // Zoek naar de relevante componenten
         bossHealth = GameObject.FindWithTag("Boss")?.GetComponent<BossHealth>();
         playerStats = GameObject.Find("Player")?.GetComponent<PlayerStats>();
+
+        orgScale = transform.localScale;
     }
 
     // Deze methode kan extern worden aangeroepen om de hittable status in te stellen
@@ -41,6 +45,7 @@ public class TriggerDamageHandler : MonoBehaviour
             {
                 if (bossHealth != null && playerStats != null)
                 {
+                    LeanTween.scale(gameObject, orgScale * .3f, .5f).setEasePunch();
                     // Roep TakeDamage aan, gebaseerd op de player stats (bijv. aanvalsschade)
                     bossHealth.TakeDamage(playerStats.attackAmount);
                     Debug.Log("Boss Took Damage via TriggerDamageHandler");

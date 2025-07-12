@@ -2077,6 +2077,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6241651024033254594, guid: a254d76abbee71c44a1791ea0b79bd50, type: 3}
   m_PrefabInstance: {fileID: 921264362}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &922509797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2263745508594601124, guid: cd0fecfabfe0e3540bff8fd6315b5853, type: 3}
+  m_PrefabInstance: {fileID: 1330956775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d65d9c3d415824eb04fde42ce497bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &948373602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3328,6 +3339,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8974551924361371381, guid: cd0fecfabfe0e3540bff8fd6315b5853, type: 3}
+      propertyPath: 'availableAttacks.Array.data[0]'
+      value: 
+      objectReference: {fileID: 922509797}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
