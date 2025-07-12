@@ -38,7 +38,7 @@ public class HomingMissile : MonoBehaviour , ISpawnHittable
     {
         GameObject playerObj = GameObject.Find("Player");
         playerstats = playerObj.GetComponent<PlayerStats>();
-        bosshealth = GameObject.Find("Grim_Reaper").GetComponent<BossHealth>();
+        bosshealth = GameObject.FindWithTag("Boss").GetComponent<BossHealth>();
         rb = GetComponent<Rigidbody2D>();
 
         if (playerObj != null)

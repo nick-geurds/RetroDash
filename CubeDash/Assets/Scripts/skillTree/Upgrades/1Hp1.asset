@@ -15,6 +15,7 @@ MonoBehaviour:
   upgradeIndex: 1
   upgradeName: Health 1
   description: Health +1
+  upgradeCost: 75
   upgradeSymbol: {fileID: 21300000, guid: d9ab9405569f8d9409dcf84a4243e6f9, type: 3}
   background: {fileID: 21300000, guid: 3d33980a445272a48abea81ff0e31f6c, type: 3}
   isUnlockedAtStart: 0

@@ -41,9 +41,16 @@ public class PlayerMovement : MonoBehaviour
 
     [HideInInspector] public bool canTakeDamage = true;
 
-    //[Header("Shield Push Settings")]
-    //public GameObject shieldPushPrefab;
-    //public float shieldPushDistanceMultiplier = 0.33f;
+    [SerializeField] private float shortDashMultiplier = 0.5f; // Toegevoegd
+    [SerializeField] private float shortDashThreshold = 1.0f;  // Swipe kleiner dan dit = korte dash
+
+    private float lastDashTime;
+    public float dashActiveGracePeriod = 0.1f;
+
+    public bool IsRecentlyDashing()
+    {
+        return isDashing || Time.time - lastDashTime < 0.1f;
+    }
 
     private PlayerDamageProjectileBurst projectileBurst;
     private ShockwaveUpgrade shockwaveUpgrade;
@@ -52,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
-        stats = GetComponent<PlayerStats>(); // Zorg dat stats hier wordt toegewezen
+        stats = GetComponent<PlayerStats>();
 
         projectileBurst = GetComponent<PlayerDamageProjectileBurst>();
         shockwaveUpgrade = GetComponent<ShockwaveUpgrade>();
@@ -77,20 +84,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnPlayerStatsInitialized()
     {
-        // Deze method wordt aangeroepen zodra PlayerStats klaar is met initialiseren
-
-        // Stel alle variabelen opnieuw in, gebaseerd op stats
         dashTimer = 0f;
         canDash = true;
-
-        knockBackForce = 3f; // eventueel ook uit stats halen als je dat wil
-
-        // andere properties die afhangen van stats:
-        // je kan hier eventueel extra initialisatie doen
+        knockBackForce = 3f;
         Debug.Log("[PlayerMovement] Player stats initialized. Ready to use dashInterval: " + stats.dashInterval + ", dashSpeed: " + stats.dashSpeed);
     }
-
-
 
     private void Update()
     {
@@ -133,13 +131,15 @@ public class PlayerMovement : MonoBehaviour
                             Vector3 launchDir = swipe.normalized;
                             dashStartPos = transform.position;
 
-                            RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDir, stats.dashDis, obstacle);
+                            //  Bepaal of korte dash
+                            bool isShortDash = swipe.magnitude < shortDashThreshold;
+                            float dashDist = isShortDash ? stats.dashDis * shortDashMultiplier : stats.dashDis;
 
-                            dashTargetPos = hit.collider != null ? hit.point : transform.position + launchDir * stats.dashDis;
+                            RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDir, dashDist, obstacle);
+                            dashTargetPos = hit.collider != null ? hit.point : transform.position + launchDir * dashDist;
 
                             dashParticles.Play();
-
-                            StartCoroutine(Dash());
+                            StartCoroutine(Dash(isShortDash)); //  Gebruik aangepaste dash
 
                             dashTimer = 0;
                             canDash = false;
@@ -175,15 +175,18 @@ public class PlayerMovement : MonoBehaviour
 
                         if (swipe.magnitude > touchThershold)
                         {
-                            Vector3 launchDirPC = swipe.normalized;
+                            Vector3 launchDir = swipe.normalized;
                             dashStartPos = transform.position;
 
-                            RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDirPC, stats.dashDis, obstacle);
-                            dashTargetPos = hit.collider != null ? hit.point : transform.position + launchDirPC * stats.dashDis;
+                            //  Bepaal of korte dash
+                            bool isShortDash = swipe.magnitude < shortDashThreshold;
+                            float dashDist = isShortDash ? stats.dashDis * shortDashMultiplier : stats.dashDis;
+
+                            RaycastHit2D hit = Physics2D.Raycast(transform.position, launchDir, dashDist, obstacle);
+                            dashTargetPos = hit.collider != null ? hit.point : transform.position + launchDir * dashDist;
 
                             dashParticles.Play();
-
-                            StartCoroutine(Dash());
+                            StartCoroutine(Dash(isShortDash)); // Gebruik aangepaste dash
 
                             dashTimer = 0;
                             canDash = false;
@@ -195,7 +198,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public IEnumerator Dash()
+    //  Dash met parameter voor korte of lange dash
+    public IEnumerator Dash(bool isShort = false)
     {
         col.enabled = true;
 
@@ -208,8 +212,14 @@ public class PlayerMovement : MonoBehaviour
 
         isDashing = true;
         canDash = false;
+
         float dashDistance = Vector3.Distance(dashStartPos, dashTargetPos);
         float dashDuration = dashDistance / stats.dashSpeed;
+
+        if (isShort)
+        {
+            dashDuration *= shortDashMultiplier;
+        }
 
         float t = 0f;
 
@@ -224,25 +234,10 @@ public class PlayerMovement : MonoBehaviour
         dashParticles.Stop();
         transform.position = ArenaBounds.Instance.ClampPosition(dashTargetPos);
 
-        Vector3 dashDir = (dashTargetPos - dashStartPos).normalized;
-
-        //// Shield push triggeren
-        //if (shieldPushPrefab != null)
-        //{
-        //    Quaternion rotation = Quaternion.LookRotation(Vector3.forward, -dashDir); // z-axis forward, y-axis naar dashrichting
-        //    GameObject shield = Instantiate(shieldPushPrefab, transform.position, rotation);
-        //    DashShieldPush shieldScript = shield.GetComponent<DashShieldPush>();
-        //    if (shieldScript != null)
-        //    {
-        //        shieldScript.moveDistance = stats.dashDis * shieldPushDistanceMultiplier;
-        //        shieldScript.Initialize(dashDir);
-        //    }
-        //}
-
         isDashing = false;
+        lastDashTime = Time.time;
         didAnimUp = false;
     }
-
 
     IEnumerator changeSpritToWhite()
     {
@@ -284,25 +279,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         col.enabled = true;
-
         rb.MovePosition(target);
         cantKnockBack = false;
     }
 
     Vector3 GetMaxKnockbackTarget(Vector3 startPos, Vector2 direction, float maxDistance)
     {
-        // Begin met maximaal de volledige knockback afstand
         Vector3 potentialTarget = startPos + (Vector3)(direction.normalized * maxDistance);
-
-        // Clamp dit punt binnen de arena bounds
         Vector3 clampedTarget = ArenaBounds.Instance.ClampPosition(potentialTarget);
-
-        // Nu is clampedTarget gegarandeerd binnen arena
-
-        // Bereken het daadwerkelijke knockback distance (korter dan maxDistance als tegen muur)
         float actualDistance = Vector3.Distance(startPos, clampedTarget);
-
-        // Retourneer de positie binnen bounds
         return clampedTarget;
     }
 

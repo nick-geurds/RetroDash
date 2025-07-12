@@ -10,6 +10,8 @@ public class Waves
     public int numberOfEnemies;  // maak int ipv float, logischer
     public float timeBetweenWaves;
     public GameObject[] spawnPoints;
+
+    public bool isBossWave;
 }
 
 public class EnemySpawnManager : MonoBehaviour
@@ -83,6 +85,8 @@ public class EnemySpawnManager : MonoBehaviour
 
     void SpawnWave()
     {
+        activeEnemies.RemoveAll(enemy => enemy == null || !enemy);
+
         spawnTimer += Time.deltaTime;
 
         if (canSpawn)
@@ -91,11 +95,12 @@ public class EnemySpawnManager : MonoBehaviour
             {
                 GameObject randomEnemy = waveIndex.enemiesToSpawn[Random.Range(0, waveIndex.enemiesToSpawn.Length)];
 
-                Vector3 spawnPos = GetValidSpawnPos();
+                Vector3 spawnPos = waveIndex.isBossWave ? Vector3.zero : GetValidSpawnPos();
 
-                if (spawnPos != Vector3.zero)
+                if (spawnPos != Vector3.zero || waveIndex.isBossWave)
                 {
-                    Instantiate(randomEnemy, spawnPos, Quaternion.identity);
+                    GameObject instance = Instantiate(randomEnemy, spawnPos, Quaternion.identity);
+                    EnemySpawnManager.activeEnemies.Add(instance); //  BELANGRIJK!
                     enemiesLeftToSpawn--;
                 }
 
@@ -119,13 +124,14 @@ public class EnemySpawnManager : MonoBehaviour
                 if (currentWaveIndex < waves.Length)
                 {
                     InitializeWave(currentWaveIndex);
-                    // Start coroutine hier of roep extern aan:
-                    StartCoroutine(GameManager.Instance.ShowWaveText(waves[currentWaveIndex + 1].timeBetweenWaves));
+
+                    float delay = waves[currentWaveIndex].timeBetweenWaves;
+                    StartCoroutine(GameManager.Instance.ShowWaveText(delay));
                 }
                 else
                 {
                     Debug.Log("Alle waves voltooid!");
-                    // Hier evt logica voor einde level
+                    // eventueel einde level logic
                 }
 
                 timeBetweenWaveTimer = 0;

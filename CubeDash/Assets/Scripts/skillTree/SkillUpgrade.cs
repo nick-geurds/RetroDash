@@ -27,6 +27,7 @@ public class SkillUpgrade : ScriptableObject
     public string upgradeName;
     public string description;
 
+    public int upgradeCost = 0;
     public Sprite upgradeSymbol;
     public Sprite background;
 
@@ -42,6 +43,7 @@ public class SkillUpgrade : ScriptableObject
     public bool boolValue = true;
     public int intValue = 1;
     public float upgradeValue = 1f;
+
 
     public bool IsUnlocked => PlayerPrefs.GetInt("Upgrade_" + upgradeIndex, 0) == 1;
 

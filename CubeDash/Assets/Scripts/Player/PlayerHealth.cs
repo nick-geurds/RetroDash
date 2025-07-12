@@ -100,6 +100,26 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (!playerMovement.isDashing && !playerMovement.cantKnockBack && playerMovement.canTakeDamage)
+            {
+                TakeDamage(dmgAmount);
+
+                Vector2 direction = (transform.position - collision.transform.position).normalized;
+                float force = playerMovement.knockBackForce;
+                float duration = .2f;
+
+                if (playerMovement.knockbackRoutine != null)
+                    StopCoroutine(playerMovement.knockbackRoutine);
+
+                playerMovement.knockbackRoutine = StartCoroutine(playerMovement.Knockback(direction, force, duration));
+            }
+        }
+    }
+
     public void TakeDamage(float amount)
     {
         StartCoroutine(ColorChange());
@@ -120,5 +140,8 @@ public class PlayerHealth : MonoBehaviour
         sprite.color = Color.white;
         yield return new WaitForSeconds(0.2f);
         sprite.color = orgColor;
+    }
+
+    void CollisionWithEnemy() { 
     }
 }

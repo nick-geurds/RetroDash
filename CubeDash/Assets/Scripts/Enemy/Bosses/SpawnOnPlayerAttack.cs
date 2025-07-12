@@ -6,6 +6,8 @@ public class SpawnOnPlayerAttack : BaseAttack
 {
     public string nameOfAttack;
 
+    public override AttackType attackType => AttackType.Special;
+
     [Header("Spawn Config")]
     public GameObject objectToSpawn;
     public float yOffset = 2f;

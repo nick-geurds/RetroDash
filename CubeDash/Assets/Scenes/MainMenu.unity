@@ -168,6 +168,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &206664350 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8111107904532925143, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
+  m_PrefabInstance: {fileID: 4256609243452906892}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &281290442 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8642051054469954770, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
@@ -674,7 +685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a949ac9f2bcb49449b3b7f53c8474a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xpText: {fileID: 1616969174}
   skillTreeManager: {fileID: 1629543176}
 --- !u!4 &415821166226554136
 Transform:
@@ -783,29 +793,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1906062781200886639, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 399.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1906062781200886639, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 167.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 1906062781200886639, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 49.11
-      objectReference: {fileID: 0}
     - target: {fileID: 3803146056549175160, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 271308279194454352}
-    - target: {fileID: 3803146056549175160, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ResetSkillTree
+    - target: {fileID: 3850187000913629582, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 399.15
       objectReference: {fileID: 0}
-    - target: {fileID: 3803146056549175160, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MainMenuManager, Assembly-CSharp
+    - target: {fileID: 3850187000913629582, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380530983037769905, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382377800309964679, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382377800309964679, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382377800309964679, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5382377800309964679, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6023855958039577756, guid: bd1f2d47e04527246972bffc5ece427a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -890,7 +908,7 @@ GameObject:
   - component: {fileID: 4569108835336096373}
   m_Layer: 0
   m_Name: ExpManager
-  m_TagString: Untagged
+  m_TagString: ExpManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -905,6 +923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2679910948677298619}
   - component: {fileID: 271308279194454352}
+  - component: {fileID: 8016862906622982213}
   m_Layer: 0
   m_Name: MainMenuManager
   m_TagString: Untagged
@@ -912,6 +931,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8016862906622982213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8016862906622982212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e62098f9d08b3646a5bee574d2e4a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xpText: {fileID: 1616969174}
 --- !u!114 &8958100643090742884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,6 +962,7 @@ MonoBehaviour:
   confirmationPanel: {fileID: 1177367037}
   confirmationTitle: {fileID: 519676645}
   confirmationDescription: {fileID: 771899866}
+  confirmationCost: {fileID: 206664350}
   confirmButton: {fileID: 946728916}
   cancelButton: {fileID: 281290442}
   confirmationPanelRect: {fileID: 1177367038}

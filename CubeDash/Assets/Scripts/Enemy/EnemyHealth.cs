@@ -61,9 +61,9 @@ public class EnemyHealth : MonoBehaviour
 
     protected virtual void Die()
     {
+        EnemySpawnManager.activeEnemies.Remove(gameObject);
         LeanTween.scale(gameObject, new Vector3(0, 0, 0), .3f).setEaseSpring().setOnComplete(() =>
         {
-            EnemySpawnManager.activeEnemies.Remove(gameObject);
             GameManager.Instance.RegisterEnemyKill();
             Destroy(gameObject);
         });

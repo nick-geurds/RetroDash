@@ -15,6 +15,7 @@ MonoBehaviour:
   upgradeIndex: 2
   upgradeName: Retaliate
   description: 'Fire 4 bullets in all directions when hit.  '
+  upgradeCost: 100
   upgradeSymbol: {fileID: 21300000, guid: cda0cdc851aa6c040a82e6c80d3cdc21, type: 3}
   background: {fileID: 21300000, guid: 7abeff44a85c3ac4daa3b2a9f269ead1, type: 3}
   isUnlockedAtStart: 0

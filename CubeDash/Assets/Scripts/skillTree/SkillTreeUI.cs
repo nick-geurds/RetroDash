@@ -12,7 +12,8 @@ public class SkillTreeUI : MonoBehaviour
 
     public GameObject confirmationPanel;
     public TextMeshProUGUI confirmationTitle;
-    public TextMeshProUGUI confirmationDescription;
+    public TextMeshProUGUI confirmationDescription; 
+    public TextMeshProUGUI confirmationCost;
     public Button confirmButton;
     public Button cancelButton;
 
@@ -216,6 +217,7 @@ public class SkillTreeUI : MonoBehaviour
         selectedUpgrade = upgrade;
         confirmationTitle.text = upgrade.upgradeName;
         confirmationDescription.text = upgrade.description;
+        confirmationCost.text = $"Cost: {upgrade.upgradeCost} XP";
 
         if (buttonDict.TryGetValue(upgrade, out var btnUI))
         {

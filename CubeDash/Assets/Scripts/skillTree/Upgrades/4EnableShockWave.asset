@@ -15,13 +15,14 @@ MonoBehaviour:
   upgradeIndex: 4
   upgradeName: ShockWave
   description: When dammaged emit a shockwave to stun enemies for some time
+  upgradeCost: 0
   upgradeSymbol: {fileID: 21300000, guid: f1f64e4ecc4b578419372f772b5d50bb, type: 3}
   background: {fileID: 21300000, guid: 7abeff44a85c3ac4daa3b2a9f269ead1, type: 3}
   isUnlockedAtStart: 0
   unlocksAfterThis:
   - {fileID: 11400000, guid: f90baa2500e9499478ec61eef3adc360, type: 2}
   uiPosition: {x: -250, y: 250}
-  upgradeType: 8
+  upgradeType: 4
   boolValue: 1
   intValue: 1
-  upgradeValue: 1
+  upgradeValue: 0.7

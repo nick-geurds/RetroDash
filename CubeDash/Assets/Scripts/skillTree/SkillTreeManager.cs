@@ -97,25 +97,49 @@ public class SkillTreeManager : MonoBehaviour
     {
         if ((availableUpgrades.Contains(upgrade) || upgrade.isUnlockedAtStart) && !unlockedUpgrades.Contains(upgrade))
         {
+            if (EXPManager.instance == null)
+            {
+                Debug.LogWarning("EXPManager instance not found.");
+                return;
+            }
+
+            if (EXPManager.instance.totalExp < upgrade.upgradeCost)
+            {
+                Debug.Log($"Niet genoeg XP om upgrade '{upgrade.upgradeName}' te kopen (kost {upgrade.upgradeCost}, je hebt {EXPManager.instance.totalExp}).");
+                return;
+            }
+
+            // Trek de XP af
+            EXPManager.instance.AddEXP(-upgrade.upgradeCost);
+
+            //  Markeer als unlocked (intern & in prefs)
             unlockedUpgrades.Add(upgrade);
             unlockedIndices.Add(upgrade.upgradeIndex);
             availableUpgrades.Remove(upgrade);
 
-            UpdateAvailableUpgrades();
+            //  Voeg toe aan centrale data-opslag zodat PlayerStats het later kan gebruiken
+            if (UnlockedUpgradeData.Instance != null)
+            {
+                UnlockedUpgradeData.Instance.AddUnlockedUpgrade(upgrade);
+            }
+            else
+            {
+                Debug.LogWarning("UnlockedUpgradeData.Instance is null — kan upgrade niet registreren.");
+            }
 
-            Debug.Log($"Unlocked upgrade: {upgrade.upgradeName} (Index: {upgrade.upgradeIndex})");
+            UpdateAvailableUpgrades();
 
             SaveProgress();
 
-            // Vraag zichtbare upgrades op
-            var visibleUpgrades = GetVisibleUpgrades();
-
-            // Update lijnen met zichtbaarheid
+            //  Visual update
             foreach (var line in Object.FindObjectsByType<LineConnection>(FindObjectsSortMode.None))
             {
                 line.UpdateVisual();
             }
+
             skillTreeUI?.UpdateUI();
+
+            Debug.Log($"Unlocked upgrade: {upgrade.upgradeName} (kostte {upgrade.upgradeCost} XP)");
         }
     }
 

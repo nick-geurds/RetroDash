@@ -29,6 +29,7 @@ public class EXPManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         totalExp = PlayerPrefs.GetInt(ExpKey, 0);
+        OnXPChanged?.Invoke(totalExp);
     }
 
     private void Start()
@@ -36,6 +37,9 @@ public class EXPManager : MonoBehaviour
         if (debugMode)
         {
             totalExp += startXP;
+
+            // Vergeet niet ook nu de UI te updaten:
+            OnXPChanged?.Invoke(totalExp);
         }
     }
     public void AddEXP(int amount)
@@ -52,6 +56,7 @@ public class EXPManager : MonoBehaviour
     {
         totalExp = 0;
         PlayerPrefs.SetInt(ExpKey, totalExp);
+        OnXPChanged?.Invoke(totalExp);
     }
 
     public void ResetAll()

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4175467225212937430}
   - component: {fileID: 3971323163357972484}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8024322507571192084}
   - component: {fileID: 4070555671234667114}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,10 +306,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2376096238930648459}
   - component: {fileID: 980566947058330696}
-  - component: {fileID: 1448807574283612215}
   - component: {fileID: 3014402495306121612}
   - component: {fileID: 4622332834342501035}
-  m_Layer: 0
+  - component: {fileID: 297183090795663036}
+  m_Layer: 8
   m_Name: Sythe
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -389,91 +389,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &1448807574283612215
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6209692110811937798}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.9087301, y: 0.016128998}
-    oldSize: {x: 2.24, y: 3.72}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.06539056, y: -0.035525367}
-      - {x: 0.080383115, y: 1.7812102}
-      - {x: 0.07225383, y: 3.1210752}
-      - {x: 0.103102654, y: 3.1393852}
-      - {x: 0.10558246, y: 3.3259995}
-      - {x: 0.12162342, y: 3.328035}
-      - {x: 0.20441398, y: 3.2944145}
-      - {x: 0.20363304, y: 3.4931273}
-      - {x: 0.12339694, y: 3.458921}
-      - {x: 0.10741438, y: 3.4638581}
-      - {x: 0.1085949, y: 3.5526965}
-      - {x: 0.06740599, y: 3.5542476}
-      - {x: 0.067421146, y: 3.6409957}
-      - {x: 0.0064856075, y: 3.6603844}
-      - {x: -0.057039037, y: 3.6407986}
-      - {x: -0.056008548, y: 3.5550702}
-      - {x: -0.098354384, y: 3.5519783}
-      - {x: -0.098246105, y: 3.475292}
-      - {x: -0.20563759, y: 3.4306858}
-      - {x: -0.30320343, y: 3.455992}
-      - {x: -0.3489125, y: 3.55665}
-      - {x: -0.66146576, y: 3.6184504}
-      - {x: -1.0796142, y: 3.620782}
-      - {x: -1.5212914, y: 3.5188887}
-      - {x: -1.8666612, y: 3.3291879}
-      - {x: -2.0437016, y: 3.15923}
-      - {x: -1.7855747, y: 3.2535906}
-      - {x: -1.427167, y: 3.3404107}
-      - {x: -1.0177553, y: 3.3593163}
-      - {x: -0.65442955, y: 3.2985644}
-      - {x: -0.3492936, y: 3.159347}
-      - {x: -0.29360253, y: 3.2420251}
-      - {x: -0.19678319, y: 3.2926505}
-      - {x: -0.09798521, y: 3.2905169}
-      - {x: -0.097773194, y: 3.1403623}
-      - {x: -0.06328369, y: 3.121075}
-      - {x: -0.07562781, y: 1.7426945}
-      - {x: -0.055774912, y: -0.034951508}
-  m_UseDelaunayMesh: 0
 --- !u!114 &3014402495306121612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,9 +420,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -516,10 +431,74 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &297183090795663036
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6209692110811937798}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.9087301, y: 0.016128998}
+    oldSize: {x: 2.24, y: 3.72}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.08492355, y: -0.052676797}
+      - {x: 0.07670739, y: 3.2924316}
+      - {x: 0.20903656, y: 3.290248}
+      - {x: 0.20940915, y: 3.4881492}
+      - {x: 0.07622666, y: 3.488155}
+      - {x: 0.07583987, y: 3.645637}
+      - {x: -0.06700895, y: 3.648486}
+      - {x: -0.067338385, y: 3.4779947}
+      - {x: -0.3361089, y: 3.5608237}
+      - {x: -0.96467215, y: 3.6190562}
+      - {x: -1.6214855, y: 3.483621}
+      - {x: -2.0534296, y: 3.1496823}
+      - {x: -1.6040874, y: 3.3075898}
+      - {x: -0.986191, y: 3.3730261}
+      - {x: -0.35431, y: 3.153353}
+      - {x: -0.06785975, y: 3.2081792}
+      - {x: -0.07416012, y: -0.05234742}
+  m_UseDelaunayMesh: 0
 --- !u!1 &7597379733826110621
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5220071746454371986}
   - component: {fileID: 3931494150632166073}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

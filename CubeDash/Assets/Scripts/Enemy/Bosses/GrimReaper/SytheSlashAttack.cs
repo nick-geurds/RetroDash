@@ -22,6 +22,8 @@ public class SytheSlashAttack : MonoBehaviour, ISpawnHittable
     private BossHealth bosshealth;
     private PlayerStats playerstats;
 
+    private Rigidbody2D rb;
+
     public void SetWillBeHittable(bool value)
     {
         willBeHittable = value;
@@ -37,15 +39,20 @@ public class SytheSlashAttack : MonoBehaviour, ISpawnHittable
         return isHittable;
     }
 
+    // Deze methode is toegevoegd om de anticipatietijd in te stellen
+    public void SetAnticipationTime(float value)
+    {
+        anticipationTime = value;
+    }
+
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
 
-        bosshealth = GameObject.Find("Grim_Reaper").GetComponent<BossHealth>();
-        playerstats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        rb = GetComponent<Rigidbody2D>();
 
-        if (playerstats != null)
-            Debug.Log("Player Found in Sythe");
+        bosshealth = GameObject.FindWithTag("Boss").GetComponent<BossHealth>();
+        playerstats = GameObject.Find("Player").GetComponent<PlayerStats>();
 
         flipped = false;
         if (allowRandomFlip && Random.value > 0.5f)
@@ -104,12 +111,13 @@ public class SytheSlashAttack : MonoBehaviour, ISpawnHittable
             sprite.color = Color.red;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    // Verander dit naar OnTriggerEnter2D
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         if (!isHittable) return;
 
-        if ((collision.gameObject.CompareTag("Player") && PlayerIsDashing(collision.gameObject)) ||
-            collision.gameObject.CompareTag("PlayerBullets"))
+        if (collider.CompareTag("Player") && PlayerIsDashing(collider.gameObject) ||
+            collider.CompareTag("PlayerBullets"))
         {
             if (bosshealth != null)
             {
