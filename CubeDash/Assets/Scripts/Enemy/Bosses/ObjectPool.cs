@@ -3,43 +3,54 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public GameObject chainPrefab;  // De keten prefab die we willen poolen
+    public GameObject prefab;
+    public int initialSize = 10;
+
     private Queue<GameObject> pool = new Queue<GameObject>();
 
-    public int poolSize = 10;  // Het aantal objecten in de pool
-
-    private void Start()
+    void Awake()
     {
-        // Vul de pool met ketens
-        for (int i = 0; i < poolSize; i++)
+        for (int i = 0; i < initialSize; i++)
         {
-            GameObject chain = Instantiate(chainPrefab);
-            chain.SetActive(false);  // Zet het object inactief
-            pool.Enqueue(chain);  // Voeg het object toe aan de pool
+            GameObject obj = Instantiate(prefab);
+            obj.SetActive(false);
+            pool.Enqueue(obj);
         }
     }
 
-    // Verkrijg een keten uit de pool
-    public GameObject GetPooledChain()
+    public GameObject Get()
     {
-        if (pool.Count > 0)
+        if (pool.Count == 0)
         {
-            GameObject chain = pool.Dequeue();
-            chain.SetActive(true);  // Zet het object actief
-            return chain;
+            GameObject newObj = Instantiate(prefab);
+            newObj.SetActive(false);
+            pool.Enqueue(newObj);
         }
-        else
-        {
-            // Maak een nieuwe keten als er geen meer beschikbaar zijn in de pool
-            GameObject chain = Instantiate(chainPrefab);
-            return chain;
-        }
+
+        GameObject objToUse = pool.Dequeue();
+        objToUse.SetActive(true);
+        return objToUse;
     }
 
-    // Zet een keten terug in de pool
-    public void ReturnChainToPool(GameObject chain)
+    public void Return(GameObject obj)
     {
-        chain.SetActive(false);  // Zet het object inactief
-        pool.Enqueue(chain);  // Voeg het object terug toe aan de pool
+        obj.SetActive(false);
+        pool.Enqueue(obj);
+    }
+
+    public List<GameObject> GetAvailableObjects(int count)
+    {
+        List<GameObject> result = new List<GameObject>();
+
+        foreach (var obj in pool) // of hoe je pool heet
+        {
+            if (!obj.activeInHierarchy)
+                result.Add(obj);
+
+            if (result.Count >= count)
+                break;
+        }
+
+        return result;
     }
 }

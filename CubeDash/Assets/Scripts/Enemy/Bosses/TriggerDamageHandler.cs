@@ -5,6 +5,7 @@ public class TriggerDamageHandler : MonoBehaviour
     [Header("Settings")]
     public string targetTag = "Player";  // De tag van het object dat kan worden geraakt
     public bool isHittable = false;     // Bepaalt of het object in staat is om schade te doen
+    public SpriteRenderer sprite;
 
     private BossHealth bossHealth;      // De referentie naar de BossHealth component
     private PlayerStats playerStats;    // De referentie naar de PlayerStats component
@@ -18,6 +19,9 @@ public class TriggerDamageHandler : MonoBehaviour
         playerStats = GameObject.Find("Player")?.GetComponent<PlayerStats>();
 
         orgScale = transform.localScale;
+
+        if(isHittable)
+            IsHittable();
     }
 
     // Deze methode kan extern worden aangeroepen om de hittable status in te stellen
@@ -58,5 +62,13 @@ public class TriggerDamageHandler : MonoBehaviour
                 }
             }
         }
+    }
+
+    void IsHittable()
+    {
+        sprite = sprite.GetComponent<SpriteRenderer>();
+        if (sprite == null) return;
+
+        sprite.color = Color.red;
     }
 }

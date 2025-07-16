@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4453868054474381750, guid: 7d2af55c98be2154f807d62d0b97b162, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4453868054474381750, guid: 7d2af55c98be2154f807d62d0b97b162, type: 3}
       propertyPath: m_TagString
@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8817571188898588376, guid: 7d2af55c98be2154f807d62d0b97b162, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8817571188898588376, guid: 7d2af55c98be2154f807d62d0b97b162, type: 3}
       propertyPath: m_TagString

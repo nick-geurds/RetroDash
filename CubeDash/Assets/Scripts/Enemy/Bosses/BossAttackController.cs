@@ -49,7 +49,7 @@ public class BossAttackController : MonoBehaviour
         {
             if (bossHealth.isPhase2TransitionActive)
             {
-                // Pauzeer alle acties zolang de transitie actief is
+                // Pauzeer de acties zolang de transitie actief is
                 yield return null; // wacht een frame
                 continue;          // ga opnieuw checken in de volgende frame
             }
@@ -67,9 +67,15 @@ public class BossAttackController : MonoBehaviour
                     if (bossHealth.currentHealth <= bossHealth.maxHealth * 0.5f)
                     {
                         if (bossHealth.isPhase2Ready)
+                        {
                             attacks = phase2Attacks;
+                            // Direct na fase 2, start gelijk met aanvallen
+                            currentState = BossState.Attacking;
+                        }
                         else
+                        {
                             attacks = availableAttacks;
+                        }
                     }
                     else
                     {
@@ -96,12 +102,21 @@ public class BossAttackController : MonoBehaviour
 
                     yield return StartCoroutine(selected.ExecuteAttack());
 
+                    // Als fase 2 klaar is, hoeft de boss niet te wachten
                     currentState = BossState.Waiting;
                     break;
 
                 case BossState.Waiting:
-                    yield return new WaitForSeconds(Random.Range(waitTimeMin, waitTimeMax));
-                    currentState = BossState.Idle;
+                    // Bij fase 2 overgang moet de boss gelijk aanvallen
+                    if (bossHealth.isPhase2Ready)
+                    {
+                        currentState = BossState.Attacking;
+                    }
+                    else
+                    {
+                        yield return new WaitForSeconds(Random.Range(waitTimeMin, waitTimeMax));
+                        currentState = BossState.Idle;
+                    }
                     break;
 
                 case BossState.Enraged:

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1039426253049031800}
   - component: {fileID: 5112192409485239819}
   - component: {fileID: 4939954139561856056}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: SoulOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 4528666650807779548}
   - component: {fileID: 7491753946635773567}
   - component: {fileID: 324577594856320069}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Chain
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -336,7 +336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1213856050024696548}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: ChainFull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 37877102224056540}
   - component: {fileID: 4369463457934934740}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: ChainMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}

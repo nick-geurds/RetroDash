@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba847be5a7cf374ca746191390e471c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
+  debugMode: 1
   startXP: 10000
 --- !u!1 &5575816390079779464
 GameObject:
