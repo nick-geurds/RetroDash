@@ -109,7 +109,7 @@ public class BossHealth : EnemyHealth
         }
         healthSlider.value = to;
 
-        if (!isPhase2TransitionActive && !isPhase2Ready && currentHealth <= maxHealth * 0.5f)
+        if (!isPhase2TransitionActive && !isPhase2Ready && currentHealth <= maxHealth * 0.5f && !readIsTweeingScale)
         {
             StartCoroutine(Phase2Transition());
         }
@@ -120,7 +120,7 @@ public class BossHealth : EnemyHealth
         if (isDead) return; // Vermijd dubbele calls
         isDead = true;
 
-        StopAllCoroutines(); // << Belangrijk: stopt Phase2Transition()
+        StopAllCoroutines(); // stopt bv. Phase2Transition()
         LeanTween.cancel(gameObject); // Stop eventuele shakes
 
         if (healthBarUI != null)
@@ -136,7 +136,10 @@ public class BossHealth : EnemyHealth
 
         EXPManager.instance.AddEXP(XpGain);
 
-        base.Die();
+        EnemySpawnManager.activeEnemies.Remove(gameObject);
+        GameManager.Instance.RegisterEnemyKill();
+
+        Destroy(gameObject);
     }
 
     private void AnimateCameraZoom(float from, float to, float duration)

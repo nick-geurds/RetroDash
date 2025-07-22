@@ -7,6 +7,8 @@ public class TriggerDamageHandler : MonoBehaviour
     public bool isHittable = false;     // Bepaalt of het object in staat is om schade te doen
     public SpriteRenderer sprite;
 
+    public bool scaleOnDamage = true;
+
     private BossHealth bossHealth;      // De referentie naar de BossHealth component
     private PlayerStats playerStats;    // De referentie naar de PlayerStats component
 
@@ -37,10 +39,16 @@ public class TriggerDamageHandler : MonoBehaviour
         return movement != null && movement.isDashing;
     }
 
+    private bool hasEntered = false;
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         // Controleer of het object hittable is en of de collider voldoet aan de voorwaarden
         if (!isHittable) return;
+
+        hasEntered = true;
+
+        if (!hasEntered) return; 
 
         if (collider.CompareTag(targetTag)) // Check of het de speler is
         {
@@ -49,8 +57,13 @@ public class TriggerDamageHandler : MonoBehaviour
             {
                 if (bossHealth != null && playerStats != null)
                 {
-                    LeanTween.scale(gameObject, orgScale * .3f, .5f).setEasePunch();
+                    if (scaleOnDamage)
+                    {
+                        LeanTween.scale(gameObject, orgScale * .3f, .5f).setEasePunch();
+                    }
+
                     // Roep TakeDamage aan, gebaseerd op de player stats (bijv. aanvalsschade)
+
                     bossHealth.TakeDamage(playerStats.attackAmount);
                     Debug.Log("Boss Took Damage via TriggerDamageHandler");
 
@@ -62,6 +75,11 @@ public class TriggerDamageHandler : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        hasEntered = false;
     }
 
     void IsHittable()

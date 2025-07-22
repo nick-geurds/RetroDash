@@ -43,10 +43,25 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    private bool isTweeningScale = false;
+    public bool readIsTweeingScale;
+
     public void TakeDamage(float amuount)
     {
         currentHealth -= amuount;
-        LeanTween.scale(gameObject, orgScale * scaleAmount, scaleDur).setEasePunch();
+
+        if (!isTweeningScale) // voorkom dat de animatie zich blijft herhalen
+        {
+            isTweeningScale = true;
+
+            LeanTween.scale(gameObject, orgScale * scaleAmount, scaleDur)
+                .setEasePunch()
+                .setOnComplete(() =>
+                {
+                    isTweeningScale = false;
+                    readIsTweeingScale = isTweeningScale;
+                });
+        }
 
         BossHealth bossHealth = this as BossHealth;
         if (bossHealth != null)
@@ -57,7 +72,9 @@ public class EnemyHealth : MonoBehaviour
             Die();
             
         }
-    }
+
+        
+}
 
     protected virtual void Die()
     {
