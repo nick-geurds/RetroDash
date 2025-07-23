@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyHealthSimple : MonoBehaviour
@@ -10,9 +11,15 @@ public class EnemyHealthSimple : MonoBehaviour
     [Header("EnemyType")]
     public bool isBoss = false;
 
+    [Header("DeathSettings")]
+    public float duration = .5f;
+    public float shakeAmount = .15f;
+
     public bool animOnDamage = true;
 
     private AnimOnDamage animationHit;
+    private EnemyProjectileShooter projectileShooter;
+    private Vector3 orgPos;
 
 
 
@@ -21,6 +28,7 @@ public class EnemyHealthSimple : MonoBehaviour
         currentHealth = maxHealth;
 
         animationHit = GetComponent<AnimOnDamage>();
+        projectileShooter = GetComponent<EnemyProjectileShooter>();
 
         EnemySpawnManager.activeEnemies.Add(gameObject);
     }
@@ -42,12 +50,50 @@ public class EnemyHealthSimple : MonoBehaviour
         if (currentHealth <= 0)
         {
             EnemySpawnManager.activeEnemies.Remove(gameObject);
-            Die();
+
+            if (projectileShooter != null && projectileShooter.onlyExplodeOnDeath == true)
+            {
+               StartCoroutine(ExplodeOnDeath());
+            }
+            else
+            {
+                 Die();
+            }
         }
     }
 
-    void Die()
+
+
+    private IEnumerator ExplodeOnDeath()
     {
+        orgPos = transform.position;
+
+        LeanTween.value(gameObject, 0, 1, duration).setOnUpdate((float val) =>
+        {
+            float x = Random.Range(-shakeAmount, shakeAmount);
+            float y = Random.Range(-shakeAmount, shakeAmount);
+
+            transform.position = orgPos + new Vector3(x, y, 0);
+        })
+            .setOnComplete(() =>
+        {
+            transform.position = orgPos;
+            projectileShooter.Spawn();
+        });
+
+        yield return new WaitForSeconds(duration);
+
+        Die();
+    }
+
+    private void Die()
+    {
+
+        if (projectileShooter != null)
+        {
+            projectileShooter.ReturnAllProjectiles();
+        }
+
         Destroy(gameObject);
     }
 }

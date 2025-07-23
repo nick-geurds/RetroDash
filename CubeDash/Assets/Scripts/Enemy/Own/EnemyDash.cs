@@ -57,10 +57,10 @@ public class EnemyDash : EnemyMovementSimple
         for (i = 0; i <= 3; i++)
         {
             sprite.color = Color.white;
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.03f);
 
             sprite.color = orgColor;
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.03f);
         }
 
         float t = 0f;
