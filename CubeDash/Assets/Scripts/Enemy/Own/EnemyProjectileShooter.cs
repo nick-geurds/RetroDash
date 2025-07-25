@@ -59,7 +59,6 @@ public class EnemyProjectileShooter : MonoBehaviour
             Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
             rb.linearVelocity = new Vector2(x, y).normalized * speed * 3;
 
-            // Voeg ProjectileLifetime toe en initialiseer
             ProjectileLifetime lifetime = obj.GetComponent<ProjectileLifetime>();
             if (lifetime != null)
             {

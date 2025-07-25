@@ -1,0 +1,1499 @@
+fileFormatVersion: 2
+guid: 86430bb234d311040a469e1705c4be8b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8831917969365310030
+    second: ChargeCircleSpriteSheet_0
+  - first:
+      213: -1808507448960638228
+    second: ChargeCircleSpriteSheet_1
+  - first:
+      213: -6536385963088346967
+    second: ChargeCircleSpriteSheet_2
+  - first:
+      213: -1039675443066636023
+    second: ChargeCircleSpriteSheet_3
+  - first:
+      213: -2025659630074722470
+    second: ChargeCircleSpriteSheet_4
+  - first:
+      213: -5130593776031289207
+    second: ChargeCircleSpriteSheet_5
+  - first:
+      213: 4857579020724117949
+    second: ChargeCircleSpriteSheet_6
+  - first:
+      213: 869337082883041637
+    second: ChargeCircleSpriteSheet_7
+  - first:
+      213: 2894788118169455289
+    second: ChargeCircleSpriteSheet_8
+  - first:
+      213: -7229817859329926492
+    second: ChargeCircleSpriteSheet_9
+  - first:
+      213: -588188341585452271
+    second: ChargeCircleSpriteSheet_10
+  - first:
+      213: 8423913284481986214
+    second: ChargeCircleSpriteSheet_11
+  - first:
+      213: 1749086404841591230
+    second: ChargeCircleSpriteSheet_12
+  - first:
+      213: -513215705657396000
+    second: ChargeCircleSpriteSheet_13
+  - first:
+      213: -2464285876857153659
+    second: ChargeCircleSpriteSheet_14
+  - first:
+      213: 8353678552047973141
+    second: ChargeCircleSpriteSheet_15
+  - first:
+      213: -7561343174036404901
+    second: ChargeCircleSpriteSheet_16
+  - first:
+      213: -7909598839805735123
+    second: ChargeCircleSpriteSheet_17
+  - first:
+      213: 986658153806749423
+    second: ChargeCircleSpriteSheet_18
+  - first:
+      213: 3140473049620811995
+    second: ChargeCircleSpriteSheet_19
+  - first:
+      213: -3293327876536142154
+    second: ChargeCircleSpriteSheet_20
+  - first:
+      213: -1230071021742612979
+    second: ChargeCircleSpriteSheet_21
+  - first:
+      213: -2427658638419285627
+    second: ChargeCircleSpriteSheet_22
+  - first:
+      213: -5818592015747607082
+    second: ChargeCircleSpriteSheet_23
+  - first:
+      213: -3315194768246762677
+    second: ChargeCircleSpriteSheet_24
+  - first:
+      213: -2772850821373083462
+    second: ChargeCircleSpriteSheet_25
+  - first:
+      213: -676348626828788407
+    second: ChargeCircleSpriteSheet_26
+  - first:
+      213: -4798827699919279708
+    second: ChargeCircleSpriteSheet_27
+  - first:
+      213: -7717490734605041287
+    second: ChargeCircleSpriteSheet_28
+  - first:
+      213: 4323181645069460854
+    second: ChargeCircleSpriteSheet_29
+  - first:
+      213: 6142918789105639314
+    second: ChargeCircleSpriteSheet_30
+  - first:
+      213: -5182324019550463970
+    second: ChargeCircleSpriteSheet_31
+  - first:
+      213: 8984602117771575917
+    second: ChargeCircleSpriteSheet_32
+  - first:
+      213: 5357769710615139267
+    second: ChargeCircleSpriteSheet_33
+  - first:
+      213: 5377999006749018108
+    second: ChargeCircleSpriteSheet_34
+  - first:
+      213: 5400557581542517509
+    second: ChargeCircleSpriteSheet_35
+  - first:
+      213: 4739797750920764264
+    second: ChargeCircleSpriteSheet_36
+  - first:
+      213: -4444038654312323463
+    second: ChargeCircleSpriteSheet_37
+  - first:
+      213: 4102303047781492666
+    second: ChargeCircleSpriteSheet_38
+  - first:
+      213: 7792696244771987031
+    second: ChargeCircleSpriteSheet_39
+  - first:
+      213: 6780392260611858527
+    second: ChargeCircleSpriteSheet_40
+  - first:
+      213: -8786369123958725244
+    second: ChargeCircleSpriteSheet_41
+  - first:
+      213: -1810775991812130836
+    second: ChargeCircleSpriteSheet_42
+  - first:
+      213: -4483557079135281183
+    second: ChargeCircleSpriteSheet_43
+  - first:
+      213: 7495169457607647240
+    second: ChargeCircleSpriteSheet_44
+  - first:
+      213: -3358459808321868231
+    second: ChargeCircleSpriteSheet_45
+  - first:
+      213: 167223667847945205
+    second: ChargeCircleSpriteSheet_46
+  - first:
+      213: -4780384429073968434
+    second: ChargeCircleSpriteSheet_47
+  - first:
+      213: 4457749870986145431
+    second: ChargeCircleSpriteSheet_48
+  - first:
+      213: 5698524149835409251
+    second: ChargeCircleSpriteSheet_49
+  - first:
+      213: -4032000674957838769
+    second: ChargeCircleSpriteSheet_50
+  - first:
+      213: 270185914903814689
+    second: ChargeCircleSpriteSheet_51
+  - first:
+      213: 68045593024019495
+    second: ChargeCircleSpriteSheet_52
+  - first:
+      213: -5545750419969159409
+    second: ChargeCircleSpriteSheet_53
+  - first:
+      213: 7436698692280894360
+    second: ChargeCircleSpriteSheet_54
+  - first:
+      213: -122414353000923853
+    second: ChargeCircleSpriteSheet_55
+  - first:
+      213: -2992104865685419650
+    second: ChargeCircleSpriteSheet_56
+  - first:
+      213: -4954732123689612289
+    second: ChargeCircleSpriteSheet_57
+  - first:
+      213: -6905787759868252537
+    second: ChargeCircleSpriteSheet_58
+  - first:
+      213: 6799232195899940226
+    second: ChargeCircleSpriteSheet_59
+  - first:
+      213: -3037811802644260097
+    second: ChargeCircleSpriteSheet_60
+  - first:
+      213: -709344497276219075
+    second: ChargeCircleSpriteSheet_61
+  - first:
+      213: -113788483331578107
+    second: ChargeCircleSpriteSheet_62
+  - first:
+      213: 6280853586639447917
+    second: ChargeCircleSpriteSheet_63
+  - first:
+      213: 6078841196242957549
+    second: ChargeCircleSpriteSheet_64
+  - first:
+      213: 6319264134919937483
+    second: ChargeCircleSpriteSheet_65
+  - first:
+      213: -3408183133076552870
+    second: ChargeCircleSpriteSheet_66
+  - first:
+      213: 3991028444200429061
+    second: ChargeCircleSpriteSheet_67
+  - first:
+      213: 3050208819922901466
+    second: ChargeCircleSpriteSheet_68
+  - first:
+      213: -2636704681144563126
+    second: ChargeCircleSpriteSheet_69
+  - first:
+      213: 4752420628153222254
+    second: ChargeCircleSpriteSheet_70
+  - first:
+      213: -185035576456849619
+    second: ChargeCircleSpriteSheet_71
+  - first:
+      213: 3974179168697307521
+    second: ChargeCircleSpriteSheet_72
+  - first:
+      213: 6572072387681947052
+    second: ChargeCircleSpriteSheet_73
+  - first:
+      213: 3586502895415465644
+    second: ChargeCircleSpriteSheet_74
+  - first:
+      213: -4678293239271066954
+    second: ChargeCircleSpriteSheet_75
+  - first:
+      213: 2157622875163321330
+    second: ChargeCircleSpriteSheet_76
+  - first:
+      213: 2794558825405049909
+    second: ChargeCircleSpriteSheet_77
+  - first:
+      213: 4024721389943971131
+    second: ChargeCircleSpriteSheet_78
+  - first:
+      213: 1117883208521035482
+    second: ChargeCircleSpriteSheet_79
+  - first:
+      213: 5854973881420688857
+    second: ChargeCircleSpriteSheet_80
+  - first:
+      213: -1438693895943427130
+    second: ChargeCircleSpriteSheet_81
+  - first:
+      213: 2941907116299629244
+    second: ChargeCircleSpriteSheet_82
+  - first:
+      213: 7861367065283438868
+    second: ChargeCircleSpriteSheet_83
+  - first:
+      213: -7148100807600393665
+    second: ChargeCircleSpriteSheet_84
+  - first:
+      213: 770852016546840948
+    second: ChargeCircleSpriteSheet_85
+  - first:
+      213: 5389466899148167874
+    second: ChargeCircleSpriteSheet_86
+  - first:
+      213: -3897174165881024260
+    second: ChargeCircleSpriteSheet_87
+  - first:
+      213: -4943080352971524794
+    second: ChargeCircleSpriteSheet_88
+  - first:
+      213: 7214598348499876737
+    second: ChargeCircleSpriteSheet_89
+  - first:
+      213: -2571184455299934421
+    second: ChargeCircleSpriteSheet_90
+  - first:
+      213: -6863727240821376603
+    second: ChargeCircleSpriteSheet_91
+  - first:
+      213: -4845135766074312560
+    second: ChargeCircleSpriteSheet_92
+  - first:
+      213: -638897655701338906
+    second: ChargeCircleSpriteSheet_93
+  - first:
+      213: -3607516222449480952
+    second: ChargeCircleSpriteSheet_94
+  - first:
+      213: 7614382129695467527
+    second: ChargeCircleSpriteSheet_95
+  - first:
+      213: 5840648998962916154
+    second: ChargeCircleSpriteSheet_96
+  - first:
+      213: -3965122732878692357
+    second: ChargeCircleSpriteSheet_97
+  - first:
+      213: -6851568463046111196
+    second: ChargeCircleSpriteSheet_98
+  - first:
+      213: -5339658073852910614
+    second: ChargeCircleSpriteSheet_99
+  - first:
+      213: 2219155486291500836
+    second: ChargeCircleSpriteSheet_100
+  - first:
+      213: -267607289943302816
+    second: ChargeCircleSpriteSheet_101
+  - first:
+      213: -6062804514959071739
+    second: ChargeCircleSpriteSheet_102
+  - first:
+      213: 8909464533002964557
+    second: ChargeCircleSpriteSheet_103
+  - first:
+      213: 4455622106719930307
+    second: ChargeCircleSpriteSheet_104
+  - first:
+      213: 107495399306771470
+    second: ChargeCircleSpriteSheet_105
+  - first:
+      213: 8808289770251118003
+    second: ChargeCircleSpriteSheet_106
+  - first:
+      213: -744977205422229219
+    second: ChargeCircleSpriteSheet_107
+  - first:
+      213: -7952727828052698860
+    second: ChargeCircleSpriteSheet_108
+  - first:
+      213: 1607576163882063238
+    second: ChargeCircleSpriteSheet_109
+  - first:
+      213: 5025802930319448488
+    second: ChargeCircleSpriteSheet_110
+  - first:
+      213: -856571065641259542
+    second: ChargeCircleSpriteSheet_111
+  - first:
+      213: 5903968278449403843
+    second: ChargeCircleSpriteSheet_112
+  - first:
+      213: -8560636554721043719
+    second: ChargeCircleSpriteSheet_113
+  - first:
+      213: -417107364407834874
+    second: ChargeCircleSpriteSheet_114
+  - first:
+      213: -6343167854952704419
+    second: ChargeCircleSpriteSheet_115
+  - first:
+      213: -5257310278834879627
+    second: ChargeCircleSpriteSheet_116
+  - first:
+      213: -5858908859185095135
+    second: ChargeCircleSpriteSheet_117
+  - first:
+      213: -487135354334168291
+    second: ChargeCircleSpriteSheet_118
+  - first:
+      213: -681946201171244089
+    second: ChargeCircleSpriteSheet_119
+  - first:
+      213: -4068881033833461085
+    second: ChargeCircleSpriteSheet_120
+  - first:
+      213: -5033819244894080911
+    second: ChargeCircleSpriteSheet_121
+  - first:
+      213: -6608907958571970115
+    second: ChargeCircleSpriteSheet_122
+  - first:
+      213: -8486858904504768083
+    second: ChargeCircleSpriteSheet_123
+  - first:
+      213: -4851686229208956374
+    second: ChargeCircleSpriteSheet_124
+  - first:
+      213: -6974722802140699472
+    second: ChargeCircleSpriteSheet_125
+  - first:
+      213: -8028881498571137953
+    second: ChargeCircleSpriteSheet_126
+  - first:
+      213: -108024511157766933
+    second: ChargeCircleSpriteSheet_127
+  - first:
+      213: 3370855083247187772
+    second: ChargeCircleSpriteSheet_128
+  - first:
+      213: 7598590014206278939
+    second: ChargeCircleSpriteSheet_129
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6730
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55127d0973680124cbcd9ae516a50d1e
+      internalID: 311712651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 6730
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34ccffc9f0723144db803bdab8edfaa7
+      internalID: 1880969978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 2692
+        y: 6730
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45aaa8dc4dec61c4eba170261310b915
+      internalID: 880677159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 4038
+        y: 6730
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8109f62155fdead4399f32a5c7cbb650
+      internalID: -2027666258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 5384
+        y: 6730
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 373ae143aaefa8343a2ff895e1b1cabb
+      internalID: -244319316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 6730
+        y: 6730
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b491309a79437d4ab427dfe9d1c273f
+      internalID: 1808305537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 8076
+        y: 6730
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e35dd745ca9237b44b1365f5ad94a074
+      internalID: -1530854172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5384
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f53db373c924b446b8f4ee4cc22cf49
+      internalID: 1276788426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 5384
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e476b359a2c5c7246bc83a0042dc9116
+      internalID: -1514168330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 2692
+        y: 5384
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62397ffbb040f1c42a4960677cc425f3
+      internalID: 890472416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 4038
+        y: 5384
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82dafd83a5cb0044a9371e1653b4459e
+      internalID: 1334506181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 5384
+        y: 5384
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d9d5df15ea90f047b65e48f979579de
+      internalID: 158650283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 6730
+        y: 5384
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e905d8f8dd9fbdb4bb3437a9e24c52ba
+      internalID: -1981995014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 8076
+        y: 5384
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49b5c3efc66236f4dbcc8ac370d28966
+      internalID: 1390351222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4038
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cec8ff7460fa5534c8f03c12cce51a21
+      internalID: -969959190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 4038
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aef27db9b6a54a246a68244d60f61e6e
+      internalID: 621478705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 2692
+        y: 4038
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a08408fa7d2abf46a160ec059306dee
+      internalID: 2077935802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 4038
+        y: 4038
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 034bac40fa5fef149bdddc250cf00b43
+      internalID: 1668958882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 5384
+        y: 4038
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea71b6e8edafdef46b193373f03342d1
+      internalID: 425152585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 6730
+        y: 4038
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32bdfd494878d2f4c9cf09b169a84f05
+      internalID: 870732713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 8076
+        y: 4038
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056a5a06579da3a4b8c2e8ff35b2924d
+      internalID: 981663601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2692
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 558639bbf5ff5994da57d2e1defce409
+      internalID: -2144784718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 2692
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8a43e07465f8fa4a895e39c1dbc0c63
+      internalID: 606897132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 2692
+        y: 2692
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ceff3bfceffb7f4c8e373817d5bd534
+      internalID: 1394111394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 4038
+        y: 2692
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d79054df8a1a4e43a8e2228cd2a56e3
+      internalID: 1836103712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 5384
+        y: 2692
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4a9dac2f7a33144f9853638d4ca0f6c
+      internalID: 1881949422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 6730
+        y: 2692
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f3887519c6f147409a2228958529cb7
+      internalID: -741135360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 8076
+        y: 2692
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b06f3b568f201240baa912a18655703
+      internalID: 1295387977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1346
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 818f599ef1a1d064cb623905c6c643b5
+      internalID: -162267657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 1346
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10b18036c69f69e4c8699b12558a6995
+      internalID: 454609208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 2692
+        y: 1346
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f0c61d8858dc549abebfc002fe5ff5
+      internalID: 2135463539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 4038
+        y: 1346
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f80892c4c2d17d45989ac39871609b8
+      internalID: -154785335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 5384
+        y: 1346
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db4bb8daf7b4cc044a7d8c81cfdcf68a
+      internalID: 1961964798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 6730
+        y: 1346
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f621066185c6c346a094c4ccb286853
+      internalID: -912414474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 8076
+        y: 1346
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e778f78d48f79f4eaedc1ee7cb6df35
+      internalID: 46239833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e38ead5a50f4b7946ade3490e182cb2e
+      internalID: -1259085581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 0
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37fc69ee99ab20c4db674206dd578f62
+      internalID: 9759506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 2692
+        y: 0
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2200deca7ab1c44799a757377e3c034
+      internalID: 1353254322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 4038
+        y: 0
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0fe6182628f7334bbd0109fd5f447d9
+      internalID: 652453096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 5384
+        y: 0
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48892c81f2cad3a41ad7989ee6d75997
+      internalID: -240732280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_40
+      rect:
+        serializedVersion: 2
+        x: 6730
+        y: 0
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1db588d661cffe449b6b6c172469908c
+      internalID: 998216316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChargeCircleSpriteSheet_41
+      rect:
+        serializedVersion: 2
+        x: 8076
+        y: 0
+        width: 1346
+        height: 1346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05c54a3c2fcebac4eabd36a559fbfa80
+      internalID: 2095579729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d2124033576dbe549a9e4f85898f9091
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ChargeCircleSpriteSheet_0: 311712651
+      ChargeCircleSpriteSheet_1: 1880969978
+      ChargeCircleSpriteSheet_10: 1334506181
+      ChargeCircleSpriteSheet_11: 158650283
+      ChargeCircleSpriteSheet_12: -1981995014
+      ChargeCircleSpriteSheet_13: 1390351222
+      ChargeCircleSpriteSheet_14: -969959190
+      ChargeCircleSpriteSheet_15: 621478705
+      ChargeCircleSpriteSheet_16: 2077935802
+      ChargeCircleSpriteSheet_17: 1668958882
+      ChargeCircleSpriteSheet_18: 425152585
+      ChargeCircleSpriteSheet_19: 870732713
+      ChargeCircleSpriteSheet_2: 880677159
+      ChargeCircleSpriteSheet_20: 981663601
+      ChargeCircleSpriteSheet_21: -2144784718
+      ChargeCircleSpriteSheet_22: 606897132
+      ChargeCircleSpriteSheet_23: 1394111394
+      ChargeCircleSpriteSheet_24: 1836103712
+      ChargeCircleSpriteSheet_25: 1881949422
+      ChargeCircleSpriteSheet_26: -741135360
+      ChargeCircleSpriteSheet_27: 1295387977
+      ChargeCircleSpriteSheet_28: -162267657
+      ChargeCircleSpriteSheet_29: 454609208
+      ChargeCircleSpriteSheet_3: -2027666258
+      ChargeCircleSpriteSheet_30: 2135463539
+      ChargeCircleSpriteSheet_31: -154785335
+      ChargeCircleSpriteSheet_32: 1961964798
+      ChargeCircleSpriteSheet_33: -912414474
+      ChargeCircleSpriteSheet_34: 46239833
+      ChargeCircleSpriteSheet_35: -1259085581
+      ChargeCircleSpriteSheet_36: 9759506
+      ChargeCircleSpriteSheet_37: 1353254322
+      ChargeCircleSpriteSheet_38: 652453096
+      ChargeCircleSpriteSheet_39: -240732280
+      ChargeCircleSpriteSheet_4: -244319316
+      ChargeCircleSpriteSheet_40: 998216316
+      ChargeCircleSpriteSheet_41: 2095579729
+      ChargeCircleSpriteSheet_5: 1808305537
+      ChargeCircleSpriteSheet_6: -1530854172
+      ChargeCircleSpriteSheet_7: 1276788426
+      ChargeCircleSpriteSheet_8: -1514168330
+      ChargeCircleSpriteSheet_9: 890472416
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

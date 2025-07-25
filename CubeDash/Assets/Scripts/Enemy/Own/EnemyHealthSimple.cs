@@ -8,8 +8,6 @@ public class EnemyHealthSimple : MonoBehaviour
     public float maxHealth;
     public ParticleSystem hitParticles;
 
-    [Header("EnemyType")]
-    public bool isBoss = false;
 
     [Header("DeathSettings")]
     public float duration = .5f;
