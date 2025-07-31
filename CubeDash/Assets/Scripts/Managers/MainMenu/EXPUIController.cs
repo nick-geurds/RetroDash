@@ -34,7 +34,7 @@ public class ExpUIController : MonoBehaviour
     private void UpdateXPText(int xp)
     {
         if (xpText != null)
-            xpText.text = $"XP: {xp}";
+            xpText.text = $"{xp}";
         else
             Debug.LogWarning("[ExpUIController] xpText is not assigned in the inspector.");
     }

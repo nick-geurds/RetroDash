@@ -5,6 +5,7 @@ public class DamageHandlerSimple : MonoBehaviour
 {
     [Header("Boss settings")]
     public bool isForBoss = false;
+    public bool canStillDieItself = false;
     public bool isHittable = false;
 
     private EnemyHealthSimple enemyHealth;
@@ -30,6 +31,10 @@ public class DamageHandlerSimple : MonoBehaviour
         playerStats = player.GetComponent<PlayerStats>();   
 
         sprite = GetComponent<SpriteRenderer>();
+        if (sprite == null)
+        {
+            sprite = GetComponentInChildren<SpriteRenderer>();
+        }
         orgColor = sprite.color;
 
         if (!isForBoss)
@@ -45,6 +50,11 @@ public class DamageHandlerSimple : MonoBehaviour
             {
                 sprite.color = Color.red;
             }
+
+            if (canStillDieItself)
+            {
+                enemyHealth = GetComponent<EnemyHealthSimple>();
+            }
         }
     }
 
@@ -58,7 +68,12 @@ public class DamageHandlerSimple : MonoBehaviour
                 if (isHittable)
                 {
                     bossHealth.TakeDamageBoss();
+                    
+                }
 
+                if (canStillDieItself)
+                {
+                    enemyHealth.TakeDamage(playerStats.attackAmount);
                 }
             }
             else

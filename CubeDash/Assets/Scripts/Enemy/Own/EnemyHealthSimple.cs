@@ -19,6 +19,7 @@ public class EnemyHealthSimple : MonoBehaviour
     private EnemyProjectileShooter projectileShooter;
     private Vector3 orgPos;
 
+    public bool isMainEnemie = false;
 
 
     private void Start()
@@ -28,7 +29,7 @@ public class EnemyHealthSimple : MonoBehaviour
         animationHit = GetComponent<AnimOnDamage>();
         projectileShooter = GetComponent<EnemyProjectileShooter>();
 
-        EnemySpawnManager.activeEnemies.Add(gameObject);
+        
     }
 
     public void TakeDamage(float damageAmount)
@@ -91,6 +92,9 @@ public class EnemyHealthSimple : MonoBehaviour
         {
             projectileShooter.ReturnAllProjectiles();
         }
+
+        if (isMainEnemie)
+            SimpleWaveManager.activeEnemies.Remove(gameObject);
 
         Destroy(gameObject);
     }

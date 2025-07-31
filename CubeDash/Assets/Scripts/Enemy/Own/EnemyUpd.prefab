@@ -155,10 +155,10 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 3
   hitParticles: {fileID: 1209371836057598466}
-  isBoss: 0
   duration: 0.5
   shakeAmount: 0.15
   animOnDamage: 1
+  isMainEnemie: 1
 --- !u!114 &7056312722086033818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f56ea127efb6b741a512bd7a403ead0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isForBoss: 0
+  canStillDieItself: 0
+  isHittable: 0
 --- !u!114 &4922892048387001688
 MonoBehaviour:
   m_ObjectHideFlags: 0

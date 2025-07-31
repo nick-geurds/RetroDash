@@ -19,9 +19,13 @@ public class HomingAttackSimple : MonoBehaviour
 
     private void Start()
     {
+        
         player = GameObject.Find("Player");
         stateMachine = FindFirstObjectByType<BossStateMachineSimple>();
+        stateMachine.activeAttacks.Add(gameObject);
+        repeatCount = Random.Range(0, repeatCount);
         StartCoroutine(HomingAttack());
+
     }
 
 

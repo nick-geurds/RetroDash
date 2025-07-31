@@ -21,6 +21,7 @@ public class EnemySpawnManager : MonoBehaviour
     public Waves[] waves;
     private Waves waveIndex;
     public int currentWaveIndex;
+    public int currentWaveCountForGM;
 
     public BoxCollider2D mapBounds; // <--- Voeg dit toe in de inspector
 
@@ -125,6 +126,7 @@ public class EnemySpawnManager : MonoBehaviour
                 {
                     InitializeWave(currentWaveIndex);
 
+                    currentWaveCountForGM++;
                     float delay = waves[currentWaveIndex].timeBetweenWaves;
                     StartCoroutine(GameManager.Instance.ShowWaveText(delay));
                 }

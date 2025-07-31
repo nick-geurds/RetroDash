@@ -21,6 +21,8 @@ public class SimpleShockWaveWrapper : MonoBehaviour
 
     private IEnumerator ShockWaveAttack()
     {
+        int randomNumber = Random.Range(numberOfShockwaves - 1, 0);
+
         GameObject pentagon = Instantiate(objectToRotate);
 
         yield return new WaitForSeconds(1.5f);
@@ -39,7 +41,7 @@ public class SimpleShockWaveWrapper : MonoBehaviour
             dmgHandle = spawnedObject.GetComponent<DamageHandlerSimple>();
 
 
-            if (i == numberOfShockwaves - 1)
+            if (i == randomNumber)
             {
                 dmgHandle.isHittable = true;
             }

@@ -1,18 +1,29 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleSytheAttack : MonoBehaviour
 {
     public float startangle = -40f;
     public float endAngle = 120f;
-    public float anticipation = .5f;
     public float duration = .3f;
 
     private Vector3 orgScale;
     private bool isFlipped = false;
 
+    private SytheSlashSimple sytheSlashAttackSimple;
+    private Color orgcolor;
+    private SpriteRenderer spriteRenderer;
+
+
     private void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        orgcolor = spriteRenderer.color;
+        sytheSlashAttackSimple = FindFirstObjectByType<SytheSlashSimple>();
+
+
         orgScale = transform.localScale;
 
         float random = Random.value;
@@ -37,7 +48,10 @@ public class SimpleSytheAttack : MonoBehaviour
 
     private IEnumerator DoSlash()
     {
-        yield return new WaitForSeconds(anticipation);
+        yield return new WaitForSeconds(sytheSlashAttackSimple.anticipation - .1f);
+        spriteRenderer.color = Color.white;
+        yield return new WaitForSeconds(.1f);
+        spriteRenderer.color = orgcolor;
 
         LeanTween.cancel(gameObject);
 
@@ -51,7 +65,8 @@ public class SimpleSytheAttack : MonoBehaviour
         }
        
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
+        sytheSlashAttackSimple.activeObjects.Remove(gameObject);
         Destroy(gameObject);
     }
 }

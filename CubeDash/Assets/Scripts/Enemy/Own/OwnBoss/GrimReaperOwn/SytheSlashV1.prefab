@@ -48,3 +48,10 @@ MonoBehaviour:
   numberToSpawn: 4
   interval: 1
   yOffset: -6
+  activeObjects: []
+  anticipationTime:
+  - 0.5
+  - 0.5
+  - 0.8
+  - 0.3
+  anticipation: 0

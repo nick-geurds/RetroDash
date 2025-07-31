@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SimpleHomingWithCurve : MonoBehaviour
 {
@@ -19,8 +20,16 @@ public class SimpleHomingWithCurve : MonoBehaviour
     private float t;
     private bool isWindUpComplete;
     private float windUpTimer;
+    
     private void Start()
     {
+
+        float randomCurve = Random.value;
+        if (randomCurve < .5f)
+        {
+            reverseCurveDirection = true;
+        }
+
         t = 0f;
         windUpTimer = 0f;
         isWindUpComplete = false;
@@ -57,6 +66,8 @@ public class SimpleHomingWithCurve : MonoBehaviour
             transform.position = endPoint;
             return;
         }
+
+
 
         Vector2 newPos = CalculateQuadraticBezierPoint(t, startPoint, controlPoint, endPoint);
         transform.position = newPos;

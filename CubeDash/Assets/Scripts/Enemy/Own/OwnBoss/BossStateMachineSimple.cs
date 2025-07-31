@@ -17,7 +17,6 @@ public class BossStateMachineSimple : MonoBehaviour
 
     public List<GameObject> meleeAttacks = new List<GameObject>();
     public List<GameObject> rangeAttacks = new List<GameObject>();
-    public List<GameObject> specialAttacks = new List<GameObject>();
 
     [HideInInspector] public List<GameObject> activeAttacks = new List<GameObject>();
 
@@ -37,10 +36,18 @@ public class BossStateMachineSimple : MonoBehaviour
         if (activeAttacks.Count == 0)
         {
             interval -= Time.deltaTime;
-
+            
             if (interval <= intervalTimer)
             {
-                MeleeAttack();
+                if (distance < meleeThreshold)
+                {
+                    MeleeAttack();
+                }
+                else
+                {
+                    RangeAttack();
+                }
+                
             }
         }
             
@@ -63,7 +70,7 @@ public class BossStateMachineSimple : MonoBehaviour
 
     void RangeAttack()
     {
-        int getNumber = Random.Range(0, rangeAttacks.Count - 1);
+        int getNumber = Random.Range(0, rangeAttacks.Count);
         Instantiate(rangeAttacks[getNumber]);
         interval = Random.Range(.7f, 1.8f);
     }

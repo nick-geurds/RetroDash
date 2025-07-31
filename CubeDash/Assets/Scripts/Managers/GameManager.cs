@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-            Instance = this;
+        Instance = this;
         
     }
 
-    public EnemySpawnManager enemySpawnManager;
+    private SimpleWaveManager waveManager;
     private GameObject player;
     private PlayerHealth playerHealth;
 
@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Start()
     {
-        waveText.text = $"WAVE " + (enemySpawnManager.currentWaveIndex + 1).ToString();
+        waveManager = FindFirstObjectByType<SimpleWaveManager>();
+        waveText.text = $"WAVE " + (waveManager.currentWaveIndex + 1).ToString();
         player = GameObject.Find("Player");
 
         // Wacht 1 frame zodat alle componenten zijn geïnitialiseerd
@@ -105,12 +106,12 @@ public class GameManager : MonoBehaviour
     {
         waveText.enabled = true;
         waveText.transform.localScale = startWaveScale;
+        waveText.text = $"WAVE " + (waveManager.currentWaveIndex + 1).ToString();
 
 
         LeanTween.cancel(waveText.gameObject);
         LeanTween.scale(waveText.gameObject, orgWaveScale, scaleWavDuration).setEase(waveStart);
 
-        waveText.text = $"WAVE " + (enemySpawnManager.currentWaveIndex + 1).ToString();
 
 
         yield return new WaitForSeconds(TimeToShow);
