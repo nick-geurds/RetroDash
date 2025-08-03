@@ -13,8 +13,8 @@ public class DamageHandlerSimple : MonoBehaviour
     private Collider2D collider2d;
 
     private GameObject player;
-    private PlayerMovement playerMov;
-    private PlayerStats playerStats;
+    private PlayerMovementSimple playerMov;
+    private PlayerDataSimple playerData;
 
 
     private GameObject boss;
@@ -27,8 +27,8 @@ public class DamageHandlerSimple : MonoBehaviour
 
     {
         player = GameObject.Find("Player");
-        playerMov = player.GetComponent<PlayerMovement>();
-        playerStats = player.GetComponent<PlayerStats>();   
+        playerMov = player.GetComponent<PlayerMovementSimple>();
+        playerData = FindFirstObjectByType<PlayerDataSimple>();  
 
         sprite = GetComponent<SpriteRenderer>();
         if (sprite == null)
@@ -73,12 +73,12 @@ public class DamageHandlerSimple : MonoBehaviour
 
                 if (canStillDieItself)
                 {
-                    enemyHealth.TakeDamage(playerStats.attackAmount);
+                    enemyHealth.TakeDamage(playerData.attackAmount);
                 }
             }
             else
             {
-                enemyHealth.TakeDamage(playerStats.attackAmount);
+                enemyHealth.TakeDamage(playerData.attackAmount);
             }
         }
     }

@@ -15,8 +15,14 @@ public class BossStateMachineSimple : MonoBehaviour
     private float interval;
     public float intervalTimer = 0f;
 
-    public List<GameObject> meleeAttacks = new List<GameObject>();
-    public List<GameObject> rangeAttacks = new List<GameObject>();
+    //public List<GameObject> meleeAttacks = new List<GameObject>();
+    //public List<GameObject> rangeAttacks = new List<GameObject>();
+
+    public GameObject[] meleeAttacks;
+    public GameObject[] rangeAttacks;
+
+    private int lastMeleeNumber = -1;
+    private int lastRangeAttackNumber = -1; 
 
     [HideInInspector] public List<GameObject> activeAttacks = new List<GameObject>();
 
@@ -63,15 +69,61 @@ public class BossStateMachineSimple : MonoBehaviour
     }
     void MeleeAttack()
     {
-       int getNumber = Random.Range(0, meleeAttacks.Count);
-       Instantiate(meleeAttacks[getNumber]);
-       interval = Random.Range(.7f, 1.8f);
+        int getNumber = Random.Range(0, rangeAttacks.Length);
+        bool validNumber = false;
+
+        if (lastMeleeNumber != getNumber)
+        {
+            validNumber = true;
+        }
+        else if (!validNumber && lastMeleeNumber > 0)
+        {
+            getNumber = getNumber - 1;
+            validNumber = true;
+        }
+        else if (!validNumber && lastMeleeNumber == 0)
+        {
+            getNumber = getNumber + 1;
+            validNumber = true;
+        }
+
+        if (validNumber)
+        {
+            Instantiate(meleeAttacks[getNumber]);
+        }
+
+        lastMeleeNumber = getNumber;
+        interval = Random.Range(.7f, 1.8f);
+
+
     }
 
     void RangeAttack()
     {
-        int getNumber = Random.Range(0, rangeAttacks.Count);
-        Instantiate(rangeAttacks[getNumber]);
+        int getNumber = Random.Range(0, rangeAttacks.Length);
+        bool validNumber = false;
+
+        if (lastRangeAttackNumber != getNumber)
+        {
+            validNumber = true;
+        }
+        else if (!validNumber && lastRangeAttackNumber > 0)
+        {
+            getNumber = getNumber - 1;
+            validNumber = true;
+        }
+        else if (!validNumber && lastRangeAttackNumber == 0)
+        {
+            getNumber = getNumber + 1;
+            validNumber = true;
+        }
+
+        if (validNumber)
+        {
+            Instantiate(rangeAttacks[getNumber]);
+        }
+
+        lastRangeAttackNumber = getNumber;
         interval = Random.Range(.7f, 1.8f);
     }
 }

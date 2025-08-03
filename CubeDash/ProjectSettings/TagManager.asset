@@ -8,6 +8,7 @@ TagManager:
   - PlayerBullets
   - Boss
   - ExpManager
+  - PlayerDefense
   layers:
   - Default
   - TransparentFX

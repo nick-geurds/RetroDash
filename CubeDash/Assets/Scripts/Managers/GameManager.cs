@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     private SimpleWaveManager waveManager;
     private GameObject player;
-    private PlayerHealth playerHealth;
+    private PlayerHealthSimple playerHealth;
 
     [Header("TextSettings")]
     public TMP_Text waveText;
@@ -25,18 +26,24 @@ public class GameManager : MonoBehaviour
     private Vector3 orgWaveScale = new Vector3(1, 1, 1);
 
     [Header("GameOverScreenSettings")]
-    public TMP_Text waveTextFinal;
     public GameObject GameOverPanel;
+    public TMP_Text enemiesKO;
     public TMP_Text playtimeFinal;
+    public TMP_Text waveReached;
+    public TMP_Text totalScoreText;
+    public TMP_Text BossesKO;
 
     
 
     private float playTime;
     private int enemiesKilled;
+    private int bossKilled;
 
     private bool gameIsOver = false;
 
+    [HideInInspector] public bool isGameOver = false;
 
+    
     private IEnumerator Start()
     {
         waveManager = FindFirstObjectByType<SimpleWaveManager>();
@@ -46,34 +53,30 @@ public class GameManager : MonoBehaviour
         // Wacht 1 frame zodat alle componenten zijn geïnitialiseerd
         yield return null;
 
-        playerHealth = player.GetComponent<PlayerHealth>();
+        playerHealth = player.GetComponent<PlayerHealthSimple>();
 
         waveText.enabled = false;
         playTime = 0f;
         enemiesKilled = 0;
+        bossKilled = 0;
 
         StartCoroutine(ShowWaveText(3));
 
+        Time.timeScale = 1f;
     }
 
     private void Update()
     {
 
-        if (playerHealth != null && playerHealth.currentHealth > 0)
+        if (playerHealth != null && playerHealth.currentHp > 0)
         {
             playTime += Time.deltaTime;
-        }
-
-        if (!gameIsOver && playerHealth != null && playerHealth.currentHealth <= 0)
-        {
-            GameOver();
         }
     }
 
     public void GameOver()
     {
-        if (gameIsOver) return;
-
+        isGameOver = true;
         int totalSeconds = Mathf.FloorToInt(playTime); // afronden naar beneden
 
         int minutes = totalSeconds / 60;
@@ -85,14 +88,18 @@ public class GameManager : MonoBehaviour
         
         GameOverPanel.SetActive(true);
 
-        waveTextFinal.GetComponent<TMPTagAnimator>().SetAnimatedText("{shake}" + waveText.text + "{/shake}");
 
         int timeScore = Mathf.FloorToInt(playTime / 5f); // 1 EXP per 5 sec
         int killScore = enemiesKilled * 10;              // 10 EXP per kill
 
-        playtimeFinal.GetComponent<TMPTagAnimator>().SetAnimatedText("{wave}" + formattedTime + "{/wave}");
 
         int totalEarned = timeScore + killScore;
+
+        BossesKO.text = bossKilled.ToString();
+        totalScoreText.text = totalEarned.ToString();
+        waveReached.text = (waveManager.currentWaveIndex + 1).ToString();
+        playtimeFinal.text = formattedTime.ToString();
+        enemiesKO.text = enemiesKilled.ToString();
 
         EXPManager.instance.AddEXP(totalEarned);
         Debug.Log($"Game Over! Gained EXP: {totalEarned}");
@@ -127,6 +134,12 @@ public class GameManager : MonoBehaviour
     public void RegisterEnemyKill()
     {
         enemiesKilled++;
+        Debug.Log($"Enemy killed. Total: {enemiesKilled}");
+    }
+
+    public void RegisterBossKill()
+    {
+        bossKilled++;
         Debug.Log($"Enemy killed. Total: {enemiesKilled}");
     }
 }

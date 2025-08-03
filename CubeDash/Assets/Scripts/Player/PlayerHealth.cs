@@ -15,18 +15,24 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer sprite;
     private Color orgColor;
 
-
+    public bool debugMode;
     
 
     private PlayerMovement playerMovement;
+    private SimpleCamareShake cameraShake;
+    private KnockBack knockBack;
+    private PlayerMovementSimple playerMovementSimple;
     
 
     public float dmgAmount = 1f;
 
     private void Awake()
     {
+        cameraShake = FindFirstObjectByType<SimpleCamareShake>();
         stats = GetComponent<PlayerStats>();
         playerMovement = GetComponent<PlayerMovement>();
+        knockBack = GetComponent<KnockBack>();
+        playerMovementSimple = GetComponent<PlayerMovementSimple>();
 
         
 
@@ -53,6 +59,14 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
+        if (debugMode)
+        {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                TakeDamage(20);
+            }
+        }
+
         if (currentHealth > stats.maxHealth)
         {
             currentHealth = stats.maxHealth;
@@ -80,56 +94,78 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            if (!playerMovement.isDashing && !playerMovement.cantKnockBack && playerMovement.canTakeDamage)
-            {
-                TakeDamage(dmgAmount);
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        if (!playerMovement.isDashing && !playerMovement.cantKnockBack && playerMovement.canTakeDamage)
+    //        {
+    //            TakeDamage(dmgAmount);
 
-                Vector2 direction = (transform.position - collision.transform.position).normalized;
-                float force = playerMovement.knockBackForce;
-                float duration = .2f;
+    //            Vector2 direction = (transform.position - collision.transform.position).normalized;
+    //            //float force = playerMovement.knockBackForce;
+    //            //float duration = .2f;
 
-                if (playerMovement.knockbackRoutine != null)
-                    StopCoroutine(playerMovement.knockbackRoutine);
+    //            //if (playerMovement.knockbackRoutine != null)
+    //            //    StopCoroutine(playerMovement.knockbackRoutine);
 
-                playerMovement.knockbackRoutine = StartCoroutine(playerMovement.Knockback(direction, force, duration));
-            }
-        }
-    }
+    //            //playerMovement.knockbackRoutine = StartCoroutine(playerMovement.Knockback(direction, force, duration));
+
+    //            StartCoroutine(knockBack.DoKnockBack(direction));
+    //        }
+    //    }
+    //}
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Enemy"))
+    //    {
+    //        if (!playerMovement.isDashing && !playerMovement.cantKnockBack && playerMovement.canTakeDamage)
+    //        {
+    //            TakeDamage(dmgAmount);
+
+    //            Vector2 direction = (transform.position - collision.transform.position).normalized;
+    //            //float force = playerMovement.knockBackForce;
+    //            //float duration = .2f;
+
+    //            //if (playerMovement.knockbackRoutine != null)
+    //            //    StopCoroutine(playerMovement.knockbackRoutine);
+
+    //            //playerMovement.knockbackRoutine = StartCoroutine(playerMovement.Knockback(direction, force, duration));
+
+    //            StartCoroutine(knockBack.DoKnockBack(direction));
+    //        }
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (!playerMovement.isDashing && !playerMovement.cantKnockBack && playerMovement.canTakeDamage)
+            Vector2 direction = transform.position - collision.transform.position;
+            if (playerMovementSimple.isDashing == false)
             {
                 TakeDamage(dmgAmount);
-
-                Vector2 direction = (transform.position - collision.transform.position).normalized;
-                float force = playerMovement.knockBackForce;
-                float duration = .2f;
-
-                if (playerMovement.knockbackRoutine != null)
-                    StopCoroutine(playerMovement.knockbackRoutine);
-
-                playerMovement.knockbackRoutine = StartCoroutine(playerMovement.Knockback(direction, force, duration));
+                StartCoroutine(knockBack.DoKnockBack(direction));
             }
         }
     }
 
     public void TakeDamage(float amount)
     {
+        StartCoroutine(cameraShake.QuickShake(15, .1f));
+
         StartCoroutine(ColorChange());
-        currentHealth -= amount;
+
+        if (!debugMode)
+            currentHealth -= amount;
 
        
 
         if (currentHealth <= 0)
         {
             Debug.Log("player died");
+            GameManager.Instance.GameOver();
             playerMovement.enabled = false;
         }
     }
@@ -142,6 +178,4 @@ public class PlayerHealth : MonoBehaviour
         sprite.color = orgColor;
     }
 
-    void CollisionWithEnemy() { 
-    }
 }

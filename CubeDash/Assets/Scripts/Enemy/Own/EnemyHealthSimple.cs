@@ -34,6 +34,7 @@ public class EnemyHealthSimple : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
+
         if (animOnDamage)
         {
             animationHit.ScaleOnDamage();
@@ -87,6 +88,7 @@ public class EnemyHealthSimple : MonoBehaviour
 
     private void Die()
     {
+        GameManager.Instance.RegisterEnemyKill();
 
         if (projectileShooter != null)
         {

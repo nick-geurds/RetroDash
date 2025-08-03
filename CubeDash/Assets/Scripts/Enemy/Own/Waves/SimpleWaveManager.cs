@@ -86,6 +86,9 @@ public class SimpleWaveManager : MonoBehaviour
 
     private IEnumerator SpawnWave()
     {
+        if (GameManager.Instance.isGameOver)
+            yield break;
+
         canSpawn = false;
 
         spawnTimer += Time.deltaTime;

@@ -70,9 +70,9 @@ MonoBehaviour:
   - {fileID: 7206217534383225569, guid: e81c11fee112fa24eaae485f0a11c1fe, type: 3}
   rangeAttacks:
   - {fileID: 3851105002896349343, guid: bd58c04f99fd50640b90f1c234db5063, type: 3}
+  - {fileID: 2456462066582370101, guid: 80a58219783f1204b974a3c4fa93186c, type: 3}
   - {fileID: 8276249208511996675, guid: 14ca215213936a84f8a41728087d13f8, type: 3}
   - {fileID: 7206217534383225569, guid: e81c11fee112fa24eaae485f0a11c1fe, type: 3}
-  - {fileID: 2456462066582370101, guid: 80a58219783f1204b974a3c4fa93186c, type: 3}
   activeAttacks: []
 --- !u!212 &5347019467055872765
 SpriteRenderer:

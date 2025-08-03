@@ -76,6 +76,7 @@ public class BossHealthSimple : MonoBehaviour
 
     void Die()
     {
+        GameManager.Instance.RegisterBossKill();
         Destroy(gameObject);
     }
 }

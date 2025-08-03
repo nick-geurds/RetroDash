@@ -23,17 +23,6 @@ public class TriggerCameraShake : MonoBehaviour
 
     private IEnumerator CalculateMag()
     {
-        //float minDistance = 15f;
-        //float currentDistance = (transform.position - player.transform.position).magnitude;
-
-        //while (currentDistance > minDistance)
-        //{
-            
-        //    currentDistance = (transform.position - player.transform.position).magnitude;
-        //    yield return null;
-        //}
-        
-
         StartCoroutine(simpleCamShake.ImpactShake(duration, 0.3f));
 
         float t = 0f;
