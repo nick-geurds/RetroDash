@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Skill Upgrade", menuName = "Skill Tree/Upgrade")]
 public class SkillUpgrade : ScriptableObject
@@ -44,6 +45,10 @@ public class SkillUpgrade : ScriptableObject
     public int intValue = 1;
     public float upgradeValue = 1f;
 
+    public Sprite icon;
+    public Image iconHolder;
+    public Color iconColor;
+    public string Description;
 
     public bool IsUnlocked => PlayerPrefs.GetInt("Upgrade_" + upgradeIndex, 0) == 1;
 
